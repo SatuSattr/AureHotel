@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "title": "AureHotel — Your Feel-Good Hotel in Jakarta",
+    "description": "AureHotel is a boutique retreat in Menteng, Jakarta. Naturally warm, refreshingly calm — where city energy, thoughtful comfort and genuine hospitality meet."
+  },
+  "nav": {
+    "primary": "Primary",
+    "offer": "Offer",
+    "home": "Home",
+    "images": "Images",
+    "request": "Request",
+    "bookNow": "Book Now",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "changeLanguage": "Change language"
+  },
+  "brand": {
+    "kicker": "Boutique Stay · Jakarta",
+    "homeAria": "{{name}} — home"
+  },
+  "hero": {
+    "ratingAria": "Rated 5 out of 5 stars",
+    "ratingLabel": "Top-rated by visitors",
+    "title": "Your <strong>Feel-Good</strong><br/><strong>Hotel</strong> in Jakarta",
+    "lede": "Naturally warm. Refreshingly calm.<br/>At AureHotel, discover a boutique retreat in Menteng, Jakarta —<br/>where city energy, quiet comfort and genuine hospitality meet."
+  },
+  "booking": {
+    "guestLabel": "Guest",
+    "guestAria": "Number of guests",
+    "selectNumber": "Select Number",
+    "dateLabel": "Check-in & Check-Out",
+    "selectDate": "Select Date",
+    "cta": "Enquire Now About Your Stay",
+    "errors": {
+      "missingBoth": "Please choose your dates and number of guests.",
+      "missingDates": "Please select both a check-in and check-out date.",
+      "missingGuests": "Please select the number of guests."
+    },
+    "success": "Thank you! Our concierge will reply about {{nights}} {{nightLabel}} for {{guests}} {{guestLabel}}."
+  },
+  "guests": {
+    "option_one": "{{count}} Guest",
+    "option_other": "{{count}} Guests"
+  },
+  "units": {
+    "night_one": "night",
+    "night_other": "nights",
+    "guest_one": "guest",
+    "guest_other": "guests"
+  },
+  "calendar": {
+    "chooseDates": "Choose your dates",
+    "previousMonth": "Previous month",
+    "nextMonth": "Next month",
+    "selectCheckIn": "Select your check-in date",
+    "selectCheckOut": "Now pick your check-out date",
+    "nightsSelected_one": "{{count}} night selected",
+    "nightsSelected_other": "{{count}} nights selected",
+    "clear": "Clear",
+    "weekdays": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+  },
+  "language": {
+    "changed": "Language switched to {{language}}"
+  }
+}

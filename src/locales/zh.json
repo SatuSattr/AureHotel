@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "AureHotel — 您在雅加达的舒心酒店",
+    "description": "AureHotel 是位于雅加达门腾的精品度假酒店。自然温暖，清新宁静——城市活力、舒适体验与真挚待客之道在此交融。"
+  },
+  "nav": {
+    "primary": "主导航",
+    "offer": "优惠",
+    "home": "首页",
+    "images": "图片",
+    "request": "咨询",
+    "bookNow": "立即预订",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "changeLanguage": "切换语言"
+  },
+  "brand": {
+    "kicker": "精品住宿 · 雅加达",
+    "homeAria": "{{name}} — 首页"
+  },
+  "hero": {
+    "ratingAria": "评分 5 分（满分 5 分）",
+    "ratingLabel": "住客高分推荐",
+    "title": "您在雅加达的<strong>舒心</strong>酒店",
+    "lede": "自然温暖，清新宁静。<br/>在 AureHotel，探索位于雅加达门腾的精品度假酒店——<br/>城市活力、静谧舒适与真挚待客之道在此交融。"
+  },
+  "booking": {
+    "guestLabel": "住客",
+    "guestAria": "住客人数",
+    "selectNumber": "选择人数",
+    "dateLabel": "入住与退房",
+    "selectDate": "选择日期",
+    "cta": "立即咨询入住",
+    "errors": {
+      "missingBoth": "请选择日期和住客人数。",
+      "missingDates": "请选择入住和退房日期。",
+      "missingGuests": "请选择住客人数。"
+    },
+    "success": "谢谢！我们的礼宾团队将尽快回复您关于 {{guests}} {{guestLabel}}、{{nights}} {{nightLabel}} 的咨询。"
+  },
+  "guests": {
+    "option_other": "{{count}} 位住客"
+  },
+  "units": {
+    "night_other": "晚",
+    "guest_other": "位住客"
+  },
+  "calendar": {
+    "chooseDates": "选择日期",
+    "previousMonth": "上个月",
+    "nextMonth": "下个月",
+    "selectCheckIn": "请选择入住日期",
+    "selectCheckOut": "请选择退房日期",
+    "nightsSelected_other": "已选择 {{count}} 晚",
+    "clear": "清除",
+    "weekdays": ["日", "一", "二", "三", "四", "五", "六"]
+  },
+  "language": {
+    "changed": "语言已切换为 {{language}}"
+  }
+}

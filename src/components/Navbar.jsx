@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { NAV_LINKS } from "../data/hotel.js";
 import { useDismiss } from "../hooks/useDismiss.js";
 import Brand from "./Brand.jsx";
@@ -8,6 +9,7 @@ import MobileMenu from "./MobileMenu.jsx";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
+  const { t } = useTranslation();
 
   useDismiss(navRef, () => setMenuOpen(false), menuOpen);
 
@@ -24,17 +26,17 @@ export default function Navbar() {
 
         <nav
           className="flex items-center gap-[clamp(18px,2.4vw,34px)] max-[960px]:hidden"
-          aria-label="Primary"
+          aria-label={t("nav.primary")}
         >
           {NAV_LINKS.map((link) => (
             <a
-              key={link.label}
+              key={link.key}
               className={`nav-link py-1 text-[15px] font-medium text-ink transition-opacity hover:opacity-70${
                 link.active ? " is-active" : ""
               }`}
               href={link.href}
             >
-              {link.label}
+              {t(link.key)}
             </a>
           ))}
         </nav>
@@ -47,19 +49,19 @@ export default function Navbar() {
           className="nav-link py-1 text-[15px] font-medium text-ink transition-opacity hover:opacity-70 max-[960px]:hidden"
           href="#request"
         >
-          Request
+          {t("nav.request")}
         </a>
         <a
           className="inline-flex items-center justify-center rounded-full bg-brown px-[27px] py-[15px] text-[15px] font-semibold tracking-[0.01em] text-white shadow-[0_10px_24px_-14px_rgba(58,42,32,0.8)] transition duration-200 hover:-translate-y-px hover:bg-brown-deep hover:shadow-[0_16px_30px_-14px_rgba(58,42,32,0.85)] max-[760px]:px-5 max-[760px]:py-3 max-[760px]:text-sm max-[520px]:hidden"
           href="#booking"
         >
-          Book Now
+          {t("nav.bookNow")}
         </a>
         <button
           className="nav-toggle hidden h-11 w-11 place-items-center rounded-full border border-line bg-white p-0 max-[960px]:grid"
           id="navToggle"
           type="button"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
           aria-expanded={menuOpen}
           aria-controls="mobileMenu"
           onClick={() => setMenuOpen((current) => !current)}

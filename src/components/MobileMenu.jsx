@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
 import { NAV_LINKS } from "../data/hotel.js";
 
 export default function MobileMenu({ open, onNavigate }) {
+  const { t } = useTranslation();
+
   return (
     <div
       className="mobile-menu absolute left-[var(--gutter)] right-[var(--gutter)] top-[calc(100%-6px)] z-[55] rounded-[18px] border border-line bg-white p-2.5 shadow-[0_30px_60px_-24px_rgba(38,26,19,0.35)]"
@@ -9,12 +12,12 @@ export default function MobileMenu({ open, onNavigate }) {
     >
       {NAV_LINKS.map((link) => (
         <a
-          key={link.label}
+          key={link.key}
           className="rounded-[10px] px-3.5 py-[13px] text-[15px] font-medium hover:bg-field"
           href={link.href}
           onClick={onNavigate}
         >
-          {link.label}
+          {t(link.key)}
         </a>
       ))}
       <a
@@ -22,14 +25,14 @@ export default function MobileMenu({ open, onNavigate }) {
         href="#request"
         onClick={onNavigate}
       >
-        Request
+        {t("nav.request")}
       </a>
       <a
         className="mt-1.5 inline-flex items-center justify-center rounded-xl bg-brown px-5 py-3.5 text-[15px] font-semibold text-white hover:bg-brown-deep"
         href="#booking"
         onClick={onNavigate}
       >
-        Book Now
+        {t("nav.bookNow")}
       </a>
     </div>
   );

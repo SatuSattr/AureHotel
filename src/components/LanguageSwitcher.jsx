@@ -1,21 +1,28 @@
 import { useRef, useState } from "react";
-import { ChevronDown, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Check, ChevronDown, Globe } from "lucide-react";
 import { LANGUAGES } from "../data/hotel.js";
 import { useDismiss } from "../hooks/useDismiss.js";
 import { useToast } from "../hooks/useToast.jsx";
 
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
-  const [language, setLanguage] = useState(LANGUAGES[0]);
   const containerRef = useRef(null);
+  const { t, i18n } = useTranslation();
   const showToast = useToast();
 
   useDismiss(containerRef, () => setOpen(false), open);
 
-  const chooseLanguage = (nextLanguage) => {
-    setLanguage(nextLanguage);
+  const currentCode = i18n.resolvedLanguage || i18n.language;
+  const currentLanguage =
+    LANGUAGES.find((item) => item.code === currentCode) ?? LANGUAGES[0];
+
+  const selectLanguage = async (code, label) => {
+    if (code !== currentCode) {
+      await i18n.changeLanguage(code);
+    }
     setOpen(false);
-    showToast(`Language switched to ${nextLanguage}`);
+    showToast(i18n.t("language.changed", { language: label }));
   };
 
   return (
@@ -26,13 +33,13 @@ export default function LanguageSwitcher() {
       <button
         className="lang__toggle flex items-center gap-[9px] bg-transparent py-1.5 text-[15px] font-medium text-ink max-[760px]:text-sm"
         type="button"
-        aria-haspopup="true"
+        aria-haspopup="menu"
         aria-expanded={open}
-        aria-label="Change language"
+        aria-label={t("nav.changeLanguage")}
         onClick={() => setOpen((current) => !current)}
       >
         <Globe className="icon icon-sm" aria-hidden="true" />
-        <span className="max-[760px]:hidden">{language}</span>
+        <span className="max-[760px]:hidden">{currentLanguage.label}</span>
         <ChevronDown
           className="icon icon-xs caret ml-0.5 opacity-75 transition-transform"
           aria-hidden="true"
@@ -45,12 +52,16 @@ export default function LanguageSwitcher() {
       >
         {LANGUAGES.map((item) => (
           <button
-            key={item}
+            key={item.code}
             type="button"
-            role="menuitem"
-            onClick={() => chooseLanguage(item)}
+            role="menuitemradio"
+            aria-checked={currentCode === item.code}
+            onClick={() => selectLanguage(item.code, item.label)}
           >
-            {item}
+            <span>{item.label}</span>
+            {currentCode === item.code ? (
+              <Check className="h-4 w-4" aria-hidden="true" />
+            ) : null}
           </button>
         ))}
       </div>

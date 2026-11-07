@@ -1,35 +1,3 @@
-export const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-
-export const MONTHS_SHORT = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-export const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-
 export function todayStart() {
   const date = new Date();
   date.setHours(0, 0, 0, 0);
@@ -52,11 +20,24 @@ export function sameDay(a, b) {
   );
 }
 
-export function formatShort(date, reference = new Date()) {
-  const label = `${date.getDate()} ${MONTHS_SHORT[date.getMonth()]}`;
-  return date.getFullYear() === reference.getFullYear()
-    ? label
-    : `${label} ${date.getFullYear()}`;
+export function formatShort(date, locale = "en", reference = new Date()) {
+  const options = {
+    day: "numeric",
+    month: "short",
+  };
+
+  if (date.getFullYear() !== reference.getFullYear()) {
+    options.year = "numeric";
+  }
+
+  return new Intl.DateTimeFormat(locale, options).format(date);
+}
+
+export function formatMonthYear(date, locale = "en") {
+  return new Intl.DateTimeFormat(locale, {
+    month: "long",
+    year: "numeric",
+  }).format(date);
 }
 
 export function nightsBetween(checkIn, checkOut) {

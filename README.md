@@ -20,8 +20,10 @@ index.html
 vite.config.js
 src/
   main.jsx                  React entry point
-  App.jsx                   Page shell + ToastProvider
+  App.jsx                   Page shell + ToastProvider + document meta
   index.css                 Tailwind entry, theme tokens, component styles
+  i18n.js                   i18next setup + language persistence
+  locales/                  Translation dictionaries (en, id, zh, ja)
   assets/                   Hero image + reviewer avatars
   data/hotel.js             Brand, nav links, languages, guest options
   utils/date.js             Date helpers for the range calendar
@@ -42,6 +44,31 @@ src/
     ui/
       Toast.jsx             Toast presentation
 ```
+
+## Internationalization
+
+The site supports **English**, **Bahasa Indonesia**, **中文**, and **日本語**. Switching a language updates the whole UI (including calendar month/weekday names, date formatting, validation messages and document meta), and the choice is persisted in `localStorage` under `aurehotel.language`.
+
+Translations live in `src/locales/*.json`. Add the same keys to every locale file, then use them in components:
+
+```jsx
+import { useTranslation } from "react-i18next";
+
+const { t } = useTranslation();
+
+<h2>{t("rooms.title")}</h2>
+<p>{t("rooms.intro", { count: 3 })}</p>
+```
+
+For inline markup, use `Trans`:
+
+```jsx
+import { Trans } from "react-i18next";
+
+<Trans i18nKey="rooms.intro" components={{ strong: <strong /> }} />
+```
+
+Plural keys use i18next's `_one` / `_other` suffixes. For languages with a single plural form (Indonesian, Chinese, Japanese), only `_other` is needed. New sections should follow this pattern so they automatically work in every supported language.
 
 ## Notes
 

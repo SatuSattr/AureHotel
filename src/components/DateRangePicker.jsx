@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Calendar, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useDismiss } from "../hooks/useDismiss.js";
 import {
-  MONTHS,
-  WEEKDAYS,
   addMonths,
+  formatMonthYear,
   formatShort,
   getMonthCells,
   nightsBetween,
@@ -12,6 +12,8 @@ import {
   startOfDay,
   todayStart,
 } from "../utils/date.js";
+
+const FALLBACK_WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
 export default function DateRangePicker({ value, onChange }) {
   const { checkIn, checkOut } = value;
@@ -23,6 +25,7 @@ export default function DateRangePicker({ value, onChange }) {
 
   const containerRef = useRef(null);
   const closeTimerRef = useRef(null);
+  const { t, i18n } = useTranslation();
 
   useDismiss(containerRef, () => setOpen(false), open);
 
@@ -33,8 +36,13 @@ export default function DateRangePicker({ value, onChange }) {
     []
   );
 
+  const locale = i18n.resolvedLanguage || i18n.language || "en";
   const today = useMemo(() => todayStart(), []);
   const cells = useMemo(() => getMonthCells(view), [view]);
+  const weekdayLabelsRaw = t("calendar.weekdays", { returnObjects: true });
+  const weekdayLabels = Array.isArray(weekdayLabelsRaw)
+    ? weekdayLabelsRaw
+    : FALLBACK_WEEKDAYS;
 
   const isCurrentMonth =
     view.getFullYear() === today.getFullYear() &&
@@ -46,15 +54,15 @@ export default function DateRangePicker({ value, onChange }) {
   const nights = checkIn && checkOut ? nightsBetween(checkIn, checkOut) : 0;
   const displayValue = checkIn
     ? checkOut
-      ? `${formatShort(checkIn, today)} – ${formatShort(checkOut, today)}`
-      : formatShort(checkIn, today)
-    : "Select Date";
+      ? `${formatShort(checkIn, locale, today)} – ${formatShort(checkOut, locale, today)}`
+      : formatShort(checkIn, locale, today)
+    : t("booking.selectDate");
 
   const hint = !checkIn
-    ? "Select your check-in date"
+    ? t("calendar.selectCheckIn")
     : !checkOut
-      ? "Now pick your check-out date"
-      : `${nights} ${nights === 1 ? "night" : "nights"} selected`;
+      ? t("calendar.selectCheckOut")
+      : t("calendar.nightsSelected", { count: nights });
 
   const toggleOpen = () => {
     if (!open && checkIn) {
@@ -85,7 +93,7 @@ export default function DateRangePicker({ value, onChange }) {
         className="field__label pl-0.5 text-[13px] font-bold text-ink"
         id="dateLabel"
       >
-        Check-in &amp; Check-Out
+        {t("booking.dateLabel")}
       </span>
 
       <button
@@ -115,26 +123,24 @@ export default function DateRangePicker({ value, onChange }) {
       <div
         className={`popover popover--calendar${open ? " is-open" : ""}`}
         role="dialog"
-        aria-label="Choose your dates"
+        aria-label={t("calendar.chooseDates")}
         hidden={!open}
       >
         <div className="cal__head">
           <button
             className="cal__nav"
             type="button"
-            aria-label="Previous month"
+            aria-label={t("calendar.previousMonth")}
             disabled={isCurrentMonth}
             onClick={() => setView(addMonths(view, -1))}
           >
             <ChevronLeft className="icon icon-sm" aria-hidden="true" />
           </button>
-          <span className="cal__month">
-            {MONTHS[view.getMonth()]} {view.getFullYear()}
-          </span>
+          <span className="cal__month">{formatMonthYear(view, locale)}</span>
           <button
             className="cal__nav"
             type="button"
-            aria-label="Next month"
+            aria-label={t("calendar.nextMonth")}
             disabled={monthsAhead >= 18}
             onClick={() => setView(addMonths(view, 1))}
           >
@@ -143,8 +149,8 @@ export default function DateRangePicker({ value, onChange }) {
         </div>
 
         <div className="cal__weekdays" aria-hidden="true">
-          {WEEKDAYS.map((day) => (
-            <span key={day}>{day}</span>
+          {weekdayLabels.map((day, index) => (
+            <span key={`${day}-${index}`}>{day}</span>
           ))}
         </div>
 
@@ -172,7 +178,7 @@ export default function DateRangePicker({ value, onChange }) {
                 className={classNames}
                 type="button"
                 disabled={date < today}
-                aria-label={date.toLocaleDateString("en-GB", {
+                aria-label={date.toLocaleDateString(locale, {
                   weekday: "long",
                   day: "numeric",
                   month: "long",
@@ -193,7 +199,7 @@ export default function DateRangePicker({ value, onChange }) {
             type="button"
             onClick={() => onChange({ checkIn: null, checkOut: null })}
           >
-            Clear
+            {t("calendar.clear")}
           </button>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useToast } from "../hooks/useToast.jsx";
 import { nightsBetween } from "../utils/date.js";
 import DateRangePicker from "./DateRangePicker.jsx";
@@ -9,32 +10,38 @@ const EMPTY_RANGE = { checkIn: null, checkOut: null };
 export default function BookingBar() {
   const [guests, setGuests] = useState(null);
   const [range, setRange] = useState(EMPTY_RANGE);
+  const { t } = useTranslation();
   const showToast = useToast();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!guests && !range.checkIn) {
-      showToast("Please choose your dates and number of guests.");
+      showToast(t("booking.errors.missingBoth"));
       return;
     }
 
     if (!range.checkIn || !range.checkOut) {
-      showToast("Please select both a check-in and check-out date.");
+      showToast(t("booking.errors.missingDates"));
       return;
     }
 
     if (!guests) {
-      showToast("Please select the number of guests.");
+      showToast(t("booking.errors.missingGuests"));
       return;
     }
 
     const nights = nightsBetween(range.checkIn, range.checkOut);
-    const nightLabel = nights === 1 ? "night" : "nights";
-    const guestLabel = guests === 1 ? "guest" : "guests";
+    const nightLabel = t("units.night", { count: nights });
+    const guestLabel = t("units.guest", { count: guests });
 
     showToast(
-      `Thank you! Our concierge will reply about ${nights} ${nightLabel} for ${guests} ${guestLabel}.`
+      t("booking.success", {
+        nights,
+        nightLabel,
+        guests,
+        guestLabel,
+      })
     );
   };
 
@@ -53,7 +60,7 @@ export default function BookingBar() {
         className="btn--cta h-[74px] rounded-[15px] bg-brown px-[22px] text-[clamp(14px,1.2vw,16px)] font-semibold tracking-[0.005em] text-white shadow-[0_16px_30px_-18px_rgba(52,36,26,0.9)] transition duration-200 hover:-translate-y-px hover:bg-brown-deep hover:shadow-[0_20px_34px_-18px_rgba(52,36,26,0.95)] active:translate-y-0 max-[960px]:col-span-2 max-[960px]:h-[58px] max-[760px]:col-span-1 max-[760px]:mt-0.5 max-[760px]:h-[54px]"
         type="submit"
       >
-        Enquire Now About Your Stay
+        {t("booking.cta")}
       </button>
     </form>
   );

@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ChevronDown, User } from "lucide-react";
 import { GUEST_OPTIONS } from "../data/hotel.js";
 import { useDismiss } from "../hooks/useDismiss.js";
@@ -6,12 +7,13 @@ import { useDismiss } from "../hooks/useDismiss.js";
 export default function GuestPicker({ value, onChange }) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef(null);
+  const { t } = useTranslation();
 
   useDismiss(containerRef, () => setOpen(false), open);
 
   const label = value
-    ? `${value} ${value === 1 ? "Guest" : "Guests"}`
-    : "Select Number";
+    ? t("guests.option", { count: value })
+    : t("booking.selectNumber");
 
   const selectGuest = (nextValue) => {
     onChange(nextValue);
@@ -28,7 +30,7 @@ export default function GuestPicker({ value, onChange }) {
         className="field__label pl-0.5 text-[13px] font-bold text-ink"
         htmlFor="guestToggle"
       >
-        Guest
+        {t("booking.guestLabel")}
       </label>
 
       <button
@@ -56,7 +58,7 @@ export default function GuestPicker({ value, onChange }) {
       <div
         className={`popover popover--guest${open ? " is-open" : ""}`}
         role="listbox"
-        aria-label="Number of guests"
+        aria-label={t("booking.guestAria")}
       >
         {GUEST_OPTIONS.map((option) => (
           <button
@@ -66,7 +68,7 @@ export default function GuestPicker({ value, onChange }) {
             aria-selected={value === option}
             onClick={() => selectGuest(option)}
           >
-            {option} {option === 1 ? "Guest" : "Guests"}
+            {t("guests.option", { count: option })}
           </button>
         ))}
       </div>

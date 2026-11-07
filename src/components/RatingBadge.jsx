@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Plus, Star } from "lucide-react";
 import avatar1 from "../assets/avatar-1.jpg";
 import avatar2 from "../assets/avatar-2.jpg";
@@ -8,16 +9,14 @@ const AVATAR_CLASSES =
   "avatar -ml-3 h-[42px] w-[42px] overflow-hidden rounded-full border-2 border-white/90 bg-[#f3ede6] shadow-[0_6px_14px_-8px_rgba(0,0,0,0.6)] first:ml-0 max-[760px]:-ml-2.5 max-[760px]:h-[34px] max-[760px]:w-[34px]";
 
 export default function RatingBadge() {
+  const { t } = useTranslation();
+
   return (
     <div className="mb-[clamp(18px,2.4vh,26px)] flex items-center gap-3.5 max-[760px]:mb-5 max-[760px]:gap-[11px]">
       <div className="flex items-center pl-0.5" aria-hidden="true">
-        {AVATARS.map((avatar, index) => (
+        {AVATARS.map((avatar) => (
           <span key={avatar} className={AVATAR_CLASSES}>
-            <img
-              className="h-full w-full object-cover"
-              src={avatar}
-              alt=""
-            />
+            <img className="h-full w-full object-cover" src={avatar} alt="" />
           </span>
         ))}
         <span
@@ -34,14 +33,14 @@ export default function RatingBadge() {
       <div className="flex flex-col items-start gap-[5px]">
         <div
           className="stars flex gap-0.5 text-gold [filter:drop-shadow(0_2px_6px_rgba(0,0,0,0.25))]"
-          aria-label="Rated 5 out of 5 stars"
+          aria-label={t("hero.ratingAria")}
         >
           {Array.from({ length: 5 }, (_, index) => (
             <Star key={index} aria-hidden="true" />
           ))}
         </div>
         <span className="text-[13px] text-white/[0.94] max-[760px]:text-xs">
-          Top-rated by visitors
+          {t("hero.ratingLabel")}
         </span>
       </div>
     </div>
