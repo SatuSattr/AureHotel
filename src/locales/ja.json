@@ -35,7 +35,8 @@
     "errors": {
       "missingBoth": "日付と人数を選択してください。",
       "missingDates": "チェックインとチェックアウトの日付を選択してください。",
-      "missingGuests": "人数を選択してください。"
+      "missingGuests": "人数を選択してください。",
+      "maxNights": "{{count}}泊以内でご選択ください。"
     },
     "success": "ありがとうございます。{{guests}} {{guestLabel}}・{{nights}} {{nightLabel}} について、コンシェルジュよりご連絡いたします。",
     "form": {
@@ -93,6 +94,7 @@
     "nextMonth": "次の月",
     "selectCheckIn": "チェックイン日を選択",
     "selectCheckOut": "チェックアウト日を選択",
+    "selectCheckOutMax": "チェックアウト日を選択（最大{{count}}泊）",
     "nightsSelected_other": "{{count}} 泊を選択中",
     "clear": "クリア",
     "weekdays": ["日", "月", "火", "水", "木", "金", "土"]

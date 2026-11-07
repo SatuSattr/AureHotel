@@ -515,6 +515,24 @@
 
 /* Room carousel card swap */
 
+.book-pulse {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+  animation: book-pulse 1.6s ease-out infinite;
+}
+
+@keyframes book-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.85);
+  }
+  70% {
+    box-shadow: 0 0 0 9px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
 .room-card--next {
   animation: room-in-next 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -577,6 +595,11 @@
     transform: translate(-50%, 0) scale(1) !important;
     transition-property: opacity !important;
     transition-duration: 0.2s !important;
+  }
+
+  .book-pulse {
+    animation: none;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.4);
   }
 }
 

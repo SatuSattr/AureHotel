@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useBookingFlow } from "../hooks/useBookingFlow.jsx";
 import { useToast } from "../hooks/useToast.jsx";
-import { nightsBetween } from "../utils/date.js";
+import { MAX_STAY_NIGHTS, nightsBetween } from "../utils/date.js";
 import DateRangePicker from "./DateRangePicker.jsx";
 import GuestPicker from "./GuestPicker.jsx";
 
@@ -11,6 +12,7 @@ export default function BookingBar() {
   const [guests, setGuests] = useState(null);
   const [range, setRange] = useState(EMPTY_RANGE);
   const { t } = useTranslation();
+  const { startFromCta } = useBookingFlow();
   const showToast = useToast();
 
   const handleSubmit = (event) => {
@@ -32,17 +34,19 @@ export default function BookingBar() {
     }
 
     const nights = nightsBetween(range.checkIn, range.checkOut);
-    const nightLabel = t("units.night", { count: nights });
-    const guestLabel = t("units.guest", { count: guests });
 
-    showToast(
-      t("booking.success", {
-        nights,
-        nightLabel,
-        guests,
-        guestLabel,
-      })
-    );
+    if (nights < 1 || nights > MAX_STAY_NIGHTS) {
+      showToast(
+        t("booking.errors.maxNights", { count: MAX_STAY_NIGHTS })
+      );
+      return;
+    }
+
+    startFromCta({
+      guests,
+      checkIn: range.checkIn,
+      checkOut: range.checkOut,
+    });
   };
 
   return (

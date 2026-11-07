@@ -9,6 +9,7 @@ export const ROOMS = [
     image: room3,
     price: 1200000,
     guests: "2",
+    maxGuests: 2,
     size: "24 m²",
     titleKey: "stay.rooms.standard.title",
     descriptionKey: "stay.rooms.standard.description",
@@ -18,6 +19,7 @@ export const ROOMS = [
     image: room4,
     price: 1800000,
     guests: "2-3",
+    maxGuests: 3,
     size: "32 m²",
     titleKey: "stay.rooms.deluxe.title",
     descriptionKey: "stay.rooms.deluxe.description",
@@ -27,8 +29,17 @@ export const ROOMS = [
     image: room2,
     price: 2750000,
     guests: "4-5",
+    maxGuests: 5,
     size: "48 m²",
     titleKey: "stay.rooms.family.title",
     descriptionKey: "stay.rooms.family.description",
   },
 ];
+
+export function roomForGuests(count) {
+  const guests = Number(count) || 0;
+
+  return (
+    ROOMS.find((room) => room.maxGuests >= guests) ?? ROOMS[ROOMS.length - 1]
+  );
+}

@@ -114,6 +114,10 @@ Below the carousel, `RoomRateTable.jsx` compares all room types with dynamic sta
 
 `BookingSection.jsx` adds the non-binding inquiry form at `#request`, which is also the target of the navbar "Book Now" button. It validates the guest name, gender, 16-digit identity number, booking date (`dd/mm/yyyy`), and numeric length of stay. Clicking **Hitung Total Bayar** fills the read-only total from the selected room price, applies a 10% room discount for stays longer than 3 nights, and adds Rp 80,000 per night when breakfast is included. Room prices and the total follow the active navbar currency.
 
+## Booking flow
+
+Choosing guests and dates in the hero booking bar prefills the booking form and scrolls to the rooms section. The guest count (1 to 5) selects the active room by capacity: Standard for 1 to 2 guests, Deluxe for 3, and Family for 4 to 5. While this flow is active, the room card Book buttons turn white with a pulsing outline. Pressing Book fills the room, booking date and duration in `#request`, then scrolls the user to the form so only the personal details and the payment calculation remain. The hero date range is capped at 30 nights.
+
 ## Footer
 
 `Footer.jsx` renders the dark rounded footer below the main content with quick links, a newsletter form, the AureHotel wordmark, and the hotel address, phone and email. The newsletter shows a toast for valid and invalid email submissions, and all copy comes from the `footer.*` keys in every locale.

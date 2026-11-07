@@ -38,7 +38,7 @@ export const CURRENCIES = [
 
 export const DEFAULT_CURRENCY = "IDR";
 
-export const GUEST_OPTIONS = [1, 2, 3, 4, 5, 6];
+export const GUEST_OPTIONS = [1, 2, 3, 4, 5];
 
 export const HOTEL_CONTACT = {
   address: "Jl. Cikini Raya No. 48, Menteng, Jakarta Pusat 10330, Indonesia",

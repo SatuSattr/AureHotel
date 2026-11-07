@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ReceiptText } from "lucide-react";
 import { ROOMS } from "../data/rooms.js";
+import { useBookingFlow } from "../hooks/useBookingFlow.jsx";
 import { useCurrency } from "../hooks/useCurrency.jsx";
 import { useToast } from "../hooks/useToast.jsx";
 import { formatPrice } from "../utils/currency.js";
+import { MAX_STAY_NIGHTS } from "../utils/date.js";
 import RoomTypePicker from "./RoomTypePicker.jsx";
 import SingleDatePicker from "./SingleDatePicker.jsx";
 
@@ -12,7 +14,6 @@ const BREAKFAST_PER_NIGHT = 80000;
 const DISCOUNT_RATE = 0.1;
 const DISCOUNT_MIN_NIGHTS = 4;
 const MIN_NAME_LENGTH = 3;
-const MAX_NIGHTS = 30;
 
 const LABEL_CLASSES = "mb-2 block text-[12.5px] font-bold text-ink";
 
@@ -45,11 +46,26 @@ function getNightsError(value) {
     return "booking.form.errors.nights";
   }
 
-  if (Number(trimmed) > MAX_NIGHTS) {
+  if (Number(trimmed) > MAX_STAY_NIGHTS) {
     return "booking.form.errors.nightsMax";
   }
 
   return null;
+}
+
+function buildSummary(roomPrice, stay, withBreakfast) {
+  const roomSubtotal = roomPrice * stay;
+  const discount =
+    stay >= DISCOUNT_MIN_NIGHTS ? roomSubtotal * DISCOUNT_RATE : 0;
+  const breakfastTotal = withBreakfast ? BREAKFAST_PER_NIGHT * stay : 0;
+
+  return {
+    nights: stay,
+    roomSubtotal,
+    discount,
+    breakfast: breakfastTotal,
+    total: roomSubtotal - discount + breakfastTotal,
+  };
 }
 
 export default function BookingSection() {
@@ -63,12 +79,42 @@ export default function BookingSection() {
   const [errors, setErrors] = useState({});
   const [summary, setSummary] = useState(null);
   const { t, i18n } = useTranslation();
+  const { ctaPreset, roomSelection } = useBookingFlow();
   const { currency } = useCurrency();
   const showToast = useToast();
   const locale = i18n.resolvedLanguage || i18n.language || "en";
 
   const room = ROOMS.find((item) => item.id === roomId) ?? ROOMS[0];
   const money = (amount) => formatPrice(amount, currency, locale);
+
+  useEffect(() => {
+    if (!ctaPreset) return;
+
+    const stay = ctaPreset.nights;
+    const selectedRoom =
+      ROOMS.find((item) => item.id === ctaPreset.roomId) ?? ROOMS[0];
+
+    setDate(ctaPreset.date);
+    setNights(String(stay));
+    setRoomId(selectedRoom.id);
+    setErrors({});
+    setSummary(
+      stay >= 1 && stay <= MAX_STAY_NIGHTS
+        ? buildSummary(selectedRoom.price, stay, breakfast)
+        : null
+    );
+  }, [ctaPreset]);
+
+  useEffect(() => {
+    if (!roomSelection) return;
+
+    const selectedRoom =
+      ROOMS.find((item) => item.id === roomSelection.roomId) ?? ROOMS[0];
+
+    setRoomId(selectedRoom.id);
+    setErrors({});
+    setSummary(null);
+  }, [roomSelection]);
 
   const setFieldError = (key, message) =>
     setErrors((current) => {
@@ -118,19 +164,10 @@ export default function BookingSection() {
     }
 
     const stay = Number(nights);
-    const roomSubtotal = room.price * stay;
-    const discount = stay >= DISCOUNT_MIN_NIGHTS ? roomSubtotal * DISCOUNT_RATE : 0;
-    const breakfastTotal = breakfast ? BREAKFAST_PER_NIGHT * stay : 0;
-    const total = roomSubtotal - discount + breakfastTotal;
+    const summary = buildSummary(room.price, stay, breakfast);
 
-    setSummary({
-      nights: stay,
-      roomSubtotal,
-      discount,
-      breakfast: breakfastTotal,
-      total,
-    });
-    showToast(t("booking.form.calculated", { total: money(total) }));
+    setSummary(summary);
+    showToast(t("booking.form.calculated", { total: money(summary.total) }));
   };
 
   return (

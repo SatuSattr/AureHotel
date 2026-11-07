@@ -44,6 +44,14 @@ export function nightsBetween(checkIn, checkOut) {
   return Math.round((checkOut - checkIn) / 86400000);
 }
 
+export const MAX_STAY_NIGHTS = 30;
+
+export function addDays(date, amount) {
+  const copy = startOfDay(date);
+  copy.setDate(copy.getDate() + amount);
+  return copy;
+}
+
 export function addMonths(date, amount) {
   return new Date(date.getFullYear(), date.getMonth() + amount, 1);
 }

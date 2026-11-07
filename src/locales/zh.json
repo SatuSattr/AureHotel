@@ -35,7 +35,8 @@
     "errors": {
       "missingBoth": "请选择日期和住客人数。",
       "missingDates": "请选择入住和退房日期。",
-      "missingGuests": "请选择住客人数。"
+      "missingGuests": "请选择住客人数。",
+      "maxNights": "请选择不超过 {{count}} 晚的入住时长。"
     },
     "success": "谢谢！我们的礼宾团队将尽快回复您关于 {{guests}} {{guestLabel}}、{{nights}} {{nightLabel}} 的咨询。",
     "form": {
@@ -93,6 +94,7 @@
     "nextMonth": "下个月",
     "selectCheckIn": "请选择入住日期",
     "selectCheckOut": "请选择退房日期",
+    "selectCheckOutMax": "请选择退房日期（最多 {{count}} 晚）",
     "nightsSelected_other": "已选择 {{count}} 晚",
     "clear": "清除",
     "weekdays": ["日", "一", "二", "三", "四", "五", "六"]

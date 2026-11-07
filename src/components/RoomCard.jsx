@@ -1,9 +1,11 @@
 import { useTranslation } from "react-i18next";
+import { useBookingFlow } from "../hooks/useBookingFlow.jsx";
 import { useCurrency } from "../hooks/useCurrency.jsx";
 import { formatPrice } from "../utils/currency.js";
 
 export default function RoomCard({ room, direction }) {
   const { t, i18n } = useTranslation();
+  const { highlightBookButtons, selectRoom } = useBookingFlow();
   const { currency } = useCurrency();
   const locale = i18n.resolvedLanguage || i18n.language || "en";
   const title = t(room.titleKey);
@@ -58,12 +60,18 @@ export default function RoomCard({ room, direction }) {
             >
               {t("stay.request")}
             </a>
-            <a
-              className="inline-flex items-center justify-center rounded-full bg-brown px-4 py-2 text-[12px] font-semibold text-white transition hover:bg-brown-deep"
-              href="#booking"
+            <button
+              className={`inline-flex items-center justify-center rounded-full px-4 py-2 text-[12px] font-semibold transition ${
+                highlightBookButtons
+                  ? "book-pulse bg-white text-brown hover:bg-white/90"
+                  : "bg-brown text-white hover:bg-brown-deep"
+              }`}
+              type="button"
+              aria-label={`${t("stay.book")} ${title}`}
+              onClick={() => selectRoom(room.id)}
             >
               {t("stay.book")}
-            </a>
+            </button>
           </div>
         </div>
       </div>

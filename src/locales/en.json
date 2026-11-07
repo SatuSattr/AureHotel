@@ -35,7 +35,8 @@
     "errors": {
       "missingBoth": "Please choose your dates and number of guests.",
       "missingDates": "Please select both a check-in and check-out date.",
-      "missingGuests": "Please select the number of guests."
+      "missingGuests": "Please select the number of guests.",
+      "maxNights": "Please select a stay of at most {{count}} nights."
     },
     "success": "Thank you! Our concierge will reply about {{nights}} {{nightLabel}} for {{guests}} {{guestLabel}}.",
     "form": {
@@ -96,6 +97,7 @@
     "nextMonth": "Next month",
     "selectCheckIn": "Select your check-in date",
     "selectCheckOut": "Now pick your check-out date",
+    "selectCheckOutMax": "Now pick your check-out date (max {{count}} nights)",
     "nightsSelected_one": "{{count}} night selected",
     "nightsSelected_other": "{{count}} nights selected",
     "clear": "Clear",

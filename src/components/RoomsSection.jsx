@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { ROOMS } from "../data/rooms.js";
+import { useBookingFlow } from "../hooks/useBookingFlow.jsx";
 import RoomRateTable from "./RoomRateTable.jsx";
 import RoomsCarousel from "./RoomsCarousel.jsx";
 
 export default function RoomsSection() {
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState(1);
+  const lastFocusToken = useRef(null);
+  const { roomFocus } = useBookingFlow();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if (!roomFocus || lastFocusToken.current === roomFocus.token) return;
+
+    lastFocusToken.current = roomFocus.token;
+
+    const index = ROOMS.findIndex((room) => room.id === roomFocus.roomId);
+
+    if (index < 0 || index === active) return;
+
+    setDirection(index > active ? 1 : -1);
+    setActive(index);
+  }, [roomFocus, active]);
 
   const navigate = (step) => {
     setDirection(step);

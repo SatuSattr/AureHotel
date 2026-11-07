@@ -11,6 +11,7 @@ import ReviewsSection from "./components/ReviewsSection.jsx";
 import TrustedBy from "./components/TrustedBy.jsx";
 import Footer from "./components/Footer.jsx";
 import { CurrencyProvider } from "./hooks/useCurrency.jsx";
+import { BookingFlowProvider } from "./hooks/useBookingFlow.jsx";
 import { ToastProvider } from "./hooks/useToast.jsx";
 
 export default function App() {
@@ -28,17 +29,19 @@ export default function App() {
   return (
     <ToastProvider>
       <CurrencyProvider>
-        <Navbar />
-        <main>
-          <Hero />
-          <TrustedBy />
-          <ReviewsSection />
-          <RoomsSection />
-          <GallerySection />
-          <AboutSection />
-          <BookingSection />
-        </main>
-        <Footer />
+        <BookingFlowProvider>
+          <Navbar />
+          <main>
+            <Hero />
+            <TrustedBy />
+            <ReviewsSection />
+            <RoomsSection />
+            <GallerySection />
+            <AboutSection />
+            <BookingSection />
+          </main>
+          <Footer />
+        </BookingFlowProvider>
       </CurrencyProvider>
     </ToastProvider>
   );

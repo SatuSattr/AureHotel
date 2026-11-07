@@ -3,10 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Calendar, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useDismiss } from "../hooks/useDismiss.js";
 import {
+  addDays,
   addMonths,
   formatMonthYear,
   formatShort,
   getMonthCells,
+  MAX_STAY_NIGHTS,
   nightsBetween,
   sameDay,
   startOfDay,
@@ -52,6 +54,7 @@ export default function DateRangePicker({ value, onChange }) {
     (view.getMonth() - today.getMonth());
 
   const nights = checkIn && checkOut ? nightsBetween(checkIn, checkOut) : 0;
+  const maxCheckOut = checkIn ? addDays(checkIn, MAX_STAY_NIGHTS) : null;
   const displayValue = checkIn
     ? checkOut
       ? `${formatShort(checkIn, locale, today)} – ${formatShort(checkOut, locale, today)}`
@@ -61,7 +64,7 @@ export default function DateRangePicker({ value, onChange }) {
   const hint = !checkIn
     ? t("calendar.selectCheckIn")
     : !checkOut
-      ? t("calendar.selectCheckOut")
+      ? t("calendar.selectCheckOutMax", { count: MAX_STAY_NIGHTS })
       : t("calendar.nightsSelected", { count: nights });
 
   const toggleOpen = () => {
@@ -78,6 +81,8 @@ export default function DateRangePicker({ value, onChange }) {
       onChange({ checkIn: picked, checkOut: null });
       return;
     }
+
+    if (nightsBetween(checkIn, picked) > MAX_STAY_NIGHTS) return;
 
     onChange({ checkIn, checkOut: picked });
     closeTimerRef.current = window.setTimeout(() => setOpen(false), 220);
@@ -177,7 +182,9 @@ export default function DateRangePicker({ value, onChange }) {
                 key={date.getTime()}
                 className={classNames}
                 type="button"
-                disabled={date < today}
+                disabled={
+                  date < today || Boolean(maxCheckOut && date > maxCheckOut)
+                }
                 aria-label={date.toLocaleDateString(locale, {
                   weekday: "long",
                   day: "numeric",
