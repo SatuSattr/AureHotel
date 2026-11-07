@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "../data/hotel.js";
 import { useDismiss } from "../hooks/useDismiss.js";
 import Brand from "./Brand.jsx";
@@ -66,9 +67,11 @@ export default function Navbar() {
           aria-controls="mobileMenu"
           onClick={() => setMenuOpen((current) => !current)}
         >
-          <span />
-          <span />
-          <span />
+          {menuOpen ? (
+            <X className="icon" aria-hidden="true" />
+          ) : (
+            <Menu className="icon" aria-hidden="true" />
+          )}
         </button>
       </div>
 
