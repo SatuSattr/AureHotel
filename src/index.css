@@ -1,0 +1,518 @@
+@import "tailwindcss";
+
+/* ============================================================
+   AureHotel — design tokens
+   ============================================================ */
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --color-paper: #fbf9f6;
+  --color-ink: #2f2723;
+  --color-ink-soft: #6d625a;
+  --color-brown: #4a3a33;
+  --color-brown-deep: #3b2d27;
+  --color-line: #e9e3dc;
+  --color-field: #f4f1ed;
+  --color-gold: #efa93e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-brown text-white;
+  }
+
+  :focus-visible {
+    outline: 2px solid #b08a63;
+    outline-offset: 3px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+:root {
+  --gutter: clamp(18px, 5.2vw, 70px);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --gutter: 16px;
+  }
+}
+
+/* ============================================================
+   Icons
+   ============================================================ */
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-sm {
+  width: 18px;
+  height: 18px;
+}
+
+.icon-xs {
+  width: 15px;
+  height: 15px;
+  stroke-width: 1.9;
+}
+
+/* ============================================================
+   Navbar
+   ============================================================ */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 1.5px;
+  background: var(--color-brown);
+  transition: right 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  right: 0;
+}
+
+/* Language */
+
+.lang__menu {
+  display: none;
+}
+
+.lang.is-open .lang__menu {
+  display: block;
+  animation: pop 0.18s ease both;
+}
+
+.lang.is-open .caret {
+  transform: rotate(180deg);
+}
+
+.lang__menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.lang__menu button:hover {
+  background: var(--color-field);
+}
+
+/* Mobile navigation */
+
+.mobile-menu {
+  display: none;
+}
+
+.nav.is-open .mobile-menu {
+  display: grid;
+  gap: 2px;
+  animation: pop 0.2s ease both;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 16px;
+  height: 1.6px;
+  margin: 2px auto;
+  background: var(--color-ink);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav.is-open .nav-toggle span:nth-child(1) {
+  transform: translateY(5.6px) rotate(45deg);
+}
+
+.nav.is-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav.is-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-5.6px) rotate(-45deg);
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+
+.hero-shade {
+  background:
+    linear-gradient(180deg, rgba(28, 19, 13, 0.28) 0%, rgba(28, 19, 13, 0.14) 32%, rgba(28, 19, 13, 0.5) 100%),
+    radial-gradient(72% 62% at 50% 43%, rgba(28, 19, 13, 0.42) 0%, rgba(28, 19, 13, 0.05) 72%);
+}
+
+.hero-content > * {
+  animation: rise 0.95s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-content > :nth-child(1) {
+  animation-delay: 0.08s;
+}
+
+.hero-content > :nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.hero-content > :nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.booking {
+  animation: rise 0.85s cubic-bezier(0.2, 0.7, 0.2, 1) 0.25s both;
+}
+
+.stars svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  stroke: none;
+}
+
+@media (max-width: 760px) {
+  .stars svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ============================================================
+   Fields & popovers
+   ============================================================ */
+
+.field__value {
+  color: var(--color-ink);
+}
+
+.field__value.is-placeholder {
+  color: #a49a91;
+}
+
+.field__control[aria-expanded="true"] {
+  border-color: #cdbfb2;
+  background: #f1ede8;
+  box-shadow: 0 0 0 3px rgba(176, 138, 99, 0.14);
+}
+
+.field__control[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+.popover {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  z-index: 30;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  box-shadow: 0 30px 60px -26px rgba(38, 26, 19, 0.45);
+}
+
+.popover.is-open {
+  display: block;
+  animation: pop 0.18s ease both;
+}
+
+.popover--guest {
+  width: 100%;
+  min-width: 190px;
+}
+
+.popover--guest button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+
+.popover--guest button:hover {
+  background: var(--color-field);
+}
+
+.popover--guest button[aria-selected="true"] {
+  background: var(--color-field);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Calendar
+   ============================================================ */
+
+.popover--calendar {
+  width: 318px;
+  padding: 14px;
+  color: var(--color-ink);
+}
+
+.cal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.cal__month {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.cal__nav {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-ink);
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.cal__nav:hover:not(:disabled) {
+  background: var(--color-field);
+}
+
+.cal__nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.cal__weekdays,
+.cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.cal__weekdays {
+  margin-bottom: 4px;
+}
+
+.cal__weekdays span {
+  display: grid;
+  place-items: center;
+  height: 28px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #a99d93;
+}
+
+.cal__grid {
+  row-gap: 2px;
+}
+
+.cal__day {
+  position: relative;
+  height: 36px;
+  border: 0;
+  border-radius: 9px;
+  background: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.cal__day:hover:not(:disabled) {
+  background: var(--color-field);
+}
+
+.cal__day:disabled {
+  color: #d3c9c0;
+  cursor: default;
+}
+
+.cal__day.is-today {
+  box-shadow: inset 0 0 0 1px #d9cbbb;
+}
+
+.cal__day.is-inrange {
+  background: #f2ebe4;
+  border-radius: 0;
+}
+
+.cal__day.is-start,
+.cal__day.is-end {
+  background: var(--color-brown);
+  color: #fff;
+  border-radius: 9px;
+}
+
+.cal__day.is-start.is-inrange {
+  border-radius: 9px 0 0 9px;
+}
+
+.cal__day.is-end.is-inrange {
+  border-radius: 0 9px 9px 0;
+}
+
+.cal__day.is-start.is-end {
+  border-radius: 9px;
+}
+
+.cal__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f0eae4;
+}
+
+.cal__foot span {
+  font-size: 11.5px;
+  color: #8f8378;
+}
+
+.cal__clear {
+  padding: 2px;
+  border: 0;
+  background: none;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-brown);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cal__clear:hover {
+  color: var(--color-brown-deep);
+}
+
+/* ============================================================
+   Toast
+   ============================================================ */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 100;
+  max-width: calc(100vw - 32px);
+  padding: 13px 20px;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 16px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   Small-screen tweaks
+   ============================================================ */
+
+@media (max-width: 760px) {
+  .popover--calendar {
+    width: min(318px, calc(100vw - 64px));
+  }
+
+  .toast {
+    bottom: 18px;
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 520px) {
+  .cal__day {
+    height: 34px;
+  }
+}
