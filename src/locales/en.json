@@ -5,10 +5,11 @@
   },
   "nav": {
     "primary": "Primary",
-    "offer": "Offer",
     "home": "Home",
-    "images": "Images",
-    "request": "Request",
+    "rooms": "Rooms",
+    "gallery": "Gallery",
+    "about": "About Us",
+    "contact": "Contact",
     "bookNow": "Book Now",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -36,7 +37,48 @@
       "missingDates": "Please select both a check-in and check-out date.",
       "missingGuests": "Please select the number of guests."
     },
-    "success": "Thank you! Our concierge will reply about {{nights}} {{nightLabel}} for {{guests}} {{guestLabel}}."
+    "success": "Thank you! Our concierge will reply about {{nights}} {{nightLabel}} for {{guests}} {{guestLabel}}.",
+    "form": {
+      "title": "Book Your Stay",
+      "subtitle": "Tell us what you are looking for and we will be happy to create a personalized offer for you.",
+      "name": "Guest Name",
+      "namePlaceholder": "Type the guest name here...",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "identity": "Identity Number",
+      "identityPlaceholder": "16 digits",
+      "roomType": "Room Type",
+      "pricePerNight": "Price per Night",
+      "date": "Booking Date",
+      "datePlaceholder": "dd/mm/yyyy",
+      "calendar": {
+        "choose": "Choose booking date",
+        "select": "Select your booking date",
+        "selected": "Booking date: {{date}}"
+      },
+      "duration": "Length of Stay",
+      "durationPlaceholder": "e.g. 3",
+      "breakfast": "Breakfast Included",
+      "breakfastHint": "+{{price}} per night",
+      "total": "Total Payment",
+      "totalPlaceholder": "Click Calculate Total Payment",
+      "calculate": "Calculate Total Payment",
+      "note": "Stays longer than 3 nights receive a 10% room discount. Breakfast is charged per night. Maximum stay is 30 nights.",
+      "roomLine": "Room ({{count}} nights)",
+      "breakfastLine": "Breakfast ({{count}} nights)",
+      "discount": "10% room discount",
+      "calculated": "Total payment calculated: {{total}}",
+      "errors": {
+        "name": "Please enter the guest name.",
+        "nameMin": "Guest name must be at least 3 characters.",
+        "gender": "Please select a gender.",
+        "identity": "Invalid input..data must be 16 digits",
+        "date": "Please enter a valid date in dd/mm/yyyy format.",
+        "nights": "Please enter numbers only.",
+        "nightsMax": "Maximum stay is 30 nights."
+      }
+    }
   },
   "guests": {
     "option_one": "{{count}} Guest",
@@ -98,6 +140,28 @@
       }
     }
   },
+  "about": {
+    "subtitle": "A little story and information about us and our houses",
+    "title": "A calm corner<br/>of Menteng",
+    "description": "<strong>AureHotel</strong> is a boutique retreat tucked into the leafy streets of Menteng, Jakarta. Housed in a restored 1970s residence, the hotel pairs warm timber, natural stone and soft linen with quiet, considered service. Every corner is designed to slow the pace: a shaded courtyard, a small library, and rooms that open to the morning light. We believe a good stay is less about spectacle and more about the small things done well.",
+    "description2": "Whether you are here for a week of work or a slow weekend away, our team is on hand from the first welcome drink to your final morning coffee. We can arrange airport transfers, private dining, laundry and local recommendations, and we are always happy to share the neighbourhood we call home.",
+    "contactTitle": "Contact",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email"
+  },
+  "gallery": {
+    "title": "Explore Our Moments",
+    "subtitle": "Feel the warm atmosphere and panoramic beauty of the hotel before you even arrive.",
+    "items": {
+      "dining": { "alt": "Dining terrace overlooking the water" },
+      "pool": { "alt": "Pool glowing at dusk" },
+      "vineyard": { "alt": "Vineyard with a glass of wine" },
+      "room": { "alt": "Guest room with a plush bed" },
+      "aerial": { "alt": "Aerial view of the resort pool" },
+      "lavender": { "alt": "Lavender field at sunset" }
+    }
+  },
   "stay": {
     "title": "Find Your Perfect<br/>Stay & Best Value",
     "lede": "From smart standard rooms to generous family suites, every stay is shaped around the way you love to rest.",
@@ -136,6 +200,27 @@
       "maxNights": "Maximum {{count}} nights",
       "breakfastNote": "Breakfast is {{price}} per night for every room type."
     }
+  },
+  "footer": {
+    "information": "Information",
+    "links": {
+      "home": "Home",
+      "about": "About",
+      "rooms": "Rooms",
+      "gallery": "Gallery",
+      "contact": "Contact"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "text": "Subscribe for exclusive offers, seasonal escapes, and quiet corners of Jakarta.",
+      "emailAria": "Email address",
+      "emailPlaceholder": "Enter your email",
+      "subscribe": "Subscribe",
+      "success": "Thanks for subscribing. Watch your inbox for our next escape.",
+      "invalid": "Please enter a valid email address."
+    },
+    "contact": "Contact",
+    "copyright": "©{{year}} All Rights Reserved by AureHotel"
   },
   "currency": {
     "choose": "Choose currency",

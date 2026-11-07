@@ -4,9 +4,10 @@ export const BRAND = {
 };
 
 export const NAV_LINKS = [
-  { key: "nav.offer", href: "#offer" },
   { key: "nav.home", href: "#home", active: true },
-  { key: "nav.images", href: "#images" },
+  { key: "nav.rooms", href: "#offer" },
+  { key: "nav.gallery", href: "#images" },
+  { key: "nav.about", href: "#about" },
 ];
 
 export const LANGUAGES = [
@@ -38,3 +39,10 @@ export const CURRENCIES = [
 export const DEFAULT_CURRENCY = "IDR";
 
 export const GUEST_OPTIONS = [1, 2, 3, 4, 5, 6];
+
+export const HOTEL_CONTACT = {
+  address: "Jl. Cikini Raya No. 48, Menteng, Jakarta Pusat 10330, Indonesia",
+  phone: "+62 21 3920 8848",
+  phoneHref: "tel:+622139208848",
+  email: "hello@aurehotel.id",
+};

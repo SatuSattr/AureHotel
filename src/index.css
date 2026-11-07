@@ -273,6 +273,11 @@
   animation: pop 0.18s ease both;
 }
 
+.popover--down {
+  top: calc(100% + 10px);
+  bottom: auto;
+}
+
 .popover--guest {
   width: 100%;
   min-width: 190px;

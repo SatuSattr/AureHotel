@@ -52,13 +52,13 @@ export default function Navbar() {
       <div className="flex items-center justify-end gap-[clamp(18px,2.4vw,34px)]">
         <a
           className="nav-link py-1 text-[15px] font-medium text-ink transition-opacity hover:opacity-70 max-[960px]:hidden"
-          href="#request"
+          href="#about"
         >
-          {t("nav.request")}
+          {t("nav.contact")}
         </a>
         <a
           className="inline-flex items-center justify-center rounded-full bg-brown px-[27px] py-[15px] text-[15px] font-semibold tracking-[0.01em] text-white shadow-[0_10px_24px_-14px_rgba(58,42,32,0.8)] transition duration-200 hover:-translate-y-px hover:bg-brown-deep hover:shadow-[0_16px_30px_-14px_rgba(58,42,32,0.85)] max-[760px]:px-5 max-[760px]:py-3 max-[760px]:text-sm max-[520px]:hidden"
-          href="#booking"
+          href="#request"
         >
           {t("nav.bookNow")}
         </a>

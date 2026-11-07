@@ -3,9 +3,13 @@ import { useTranslation } from "react-i18next";
 import "./i18n.js";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
+import AboutSection from "./components/AboutSection.jsx";
+import BookingSection from "./components/BookingSection.jsx";
 import RoomsSection from "./components/RoomsSection.jsx";
+import GallerySection from "./components/GallerySection.jsx";
 import ReviewsSection from "./components/ReviewsSection.jsx";
 import TrustedBy from "./components/TrustedBy.jsx";
+import Footer from "./components/Footer.jsx";
 import { CurrencyProvider } from "./hooks/useCurrency.jsx";
 import { ToastProvider } from "./hooks/useToast.jsx";
 
@@ -30,7 +34,11 @@ export default function App() {
           <TrustedBy />
           <ReviewsSection />
           <RoomsSection />
+          <GallerySection />
+          <AboutSection />
+          <BookingSection />
         </main>
+        <Footer />
       </CurrencyProvider>
     </ToastProvider>
   );

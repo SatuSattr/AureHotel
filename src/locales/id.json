@@ -5,10 +5,11 @@
   },
   "nav": {
     "primary": "Utama",
-    "offer": "Penawaran",
     "home": "Beranda",
-    "images": "Galeri",
-    "request": "Permintaan",
+    "rooms": "Kamar",
+    "gallery": "Galeri",
+    "about": "Tentang Kami",
+    "contact": "Kontak",
     "bookNow": "Pesan Sekarang",
     "openMenu": "Buka menu",
     "closeMenu": "Tutup menu",
@@ -36,7 +37,48 @@
       "missingDates": "Silakan pilih tanggal check-in dan check-out.",
       "missingGuests": "Silakan pilih jumlah tamu."
     },
-    "success": "Terima kasih! Concierge kami akan menghubungi Anda mengenai {{nights}} {{nightLabel}} untuk {{guests}} {{guestLabel}}."
+    "success": "Terima kasih! Concierge kami akan menghubungi Anda mengenai {{nights}} {{nightLabel}} untuk {{guests}} {{guestLabel}}.",
+    "form": {
+      "title": "Pesan Penginapan Anda",
+      "subtitle": "Ceritakan kebutuhan menginap Anda dan kami akan dengan senang hati menyiapkan penawaran khusus untuk Anda.",
+      "name": "Nama Pemesan",
+      "namePlaceholder": "Tulis nama pemesan di sini...",
+      "gender": "Jenis Kelamin",
+      "male": "Laki-laki",
+      "female": "Perempuan",
+      "identity": "Nomor Identitas",
+      "identityPlaceholder": "16 digit",
+      "roomType": "Tipe Kamar",
+      "pricePerNight": "Harga per Malam",
+      "date": "Tanggal Pesan",
+      "datePlaceholder": "dd/mm/yyyy",
+      "calendar": {
+        "choose": "Pilih tanggal pesan",
+        "select": "Pilih tanggal pesan Anda",
+        "selected": "Tanggal pesan: {{date}}"
+      },
+      "duration": "Durasi Menginap",
+      "durationPlaceholder": "contoh: 3",
+      "breakfast": "Termasuk Breakfast",
+      "breakfastHint": "+{{price}} per malam",
+      "total": "Total Bayar",
+      "totalPlaceholder": "Klik Hitung Total Bayar",
+      "calculate": "Hitung Total Bayar",
+      "note": "Menginap lebih dari 3 malam mendapat diskon kamar 10%. Breakfast dihitung per malam. Durasi maksimal 30 malam.",
+      "roomLine": "Kamar ({{count}} malam)",
+      "breakfastLine": "Breakfast ({{count}} malam)",
+      "discount": "Diskon kamar 10%",
+      "calculated": "Total bayar berhasil dihitung: {{total}}",
+      "errors": {
+        "name": "Nama pemesan wajib diisi.",
+        "nameMin": "Nama pemesan minimal 3 karakter.",
+        "gender": "Pilih jenis kelamin.",
+        "identity": "isian salah..data harus 16 digit",
+        "date": "Isi tanggal dengan format dd/mm/yyyy.",
+        "nights": "harus isi angka",
+        "nightsMax": "Maksimal menginap 30 malam."
+      }
+    }
   },
   "guests": {
     "option_other": "{{count}} Tamu"
@@ -94,6 +136,28 @@
       }
     }
   },
+  "about": {
+    "subtitle": "Sedikit cerita dan informasi tentang kami dan rumah kami",
+    "title": "Sudut tenang<br/>di Menteng",
+    "description": "<strong>AureHotel</strong> adalah retreat butik yang tersembunyi di jalanan rindang Menteng, Jakarta. Berada di bangunan hunian tahun 1970-an yang direstorasi, hotel ini memadukan kayu hangat, batu alami, dan linen lembut dengan pelayanan yang tenang dan penuh perhatian. Setiap sudut dirancang untuk memperlambat langkah: halaman teduh, perpustakaan kecil, dan kamar yang terbuka pada cahaya pagi. Kami percaya masa menginap yang baik bukan soal kemegahan, melainkan hal-hal kecil yang dikerjakan dengan baik.",
+    "description2": "Baik Anda datang untuk urusan kerja selama sepekan atau menikmati akhir pekan yang santai, tim kami siap membantu dari welcome drink pertama hingga kopi pagi terakhir Anda. Kami dapat mengatur antar-jemput bandara, makan malam privat, layanan cuci, dan rekomendasi tempat lokal, serta dengan senang hati berbagi cerita tentang lingkungan yang kami sebut rumah.",
+    "contactTitle": "Kontak",
+    "addressLabel": "Alamat",
+    "phoneLabel": "Telepon",
+    "emailLabel": "Email"
+  },
+  "gallery": {
+    "title": "Jelajahi Momen Kami",
+    "subtitle": "Rasakan suasana hangat dan keindahan panorama hotel bahkan sebelum Anda tiba.",
+    "items": {
+      "dining": { "alt": "Teras makan dengan pemandangan air" },
+      "pool": { "alt": "Kolam renang yang bersinar saat senja" },
+      "vineyard": { "alt": "Kebun anggur dengan segelas wine" },
+      "room": { "alt": "Kamar tamu dengan kasur yang nyaman" },
+      "aerial": { "alt": "Pemandangan kolam resor dari udara" },
+      "lavender": { "alt": "Ladang lavender saat matahari terbenam" }
+    }
+  },
   "stay": {
     "title": "Temukan Penginapan<br/>Sempurna & Nilai Terbaik",
     "lede": "Dari kamar standard yang cerdas hingga suite keluarga yang luas, setiap penginapan dirancang untuk cara Anda beristirahat.",
@@ -131,6 +195,27 @@
       "maxNights": "Maksimal {{count}} malam",
       "breakfastNote": "Sarapan {{price}} per malam untuk semua tipe kamar."
     }
+  },
+  "footer": {
+    "information": "Informasi",
+    "links": {
+      "home": "Beranda",
+      "about": "Tentang",
+      "rooms": "Kamar",
+      "gallery": "Galeri",
+      "contact": "Kontak"
+    },
+    "newsletter": {
+      "title": "Buletin",
+      "text": "Berlangganan untuk penawaran eksklusif, liburan musiman, dan sudut tenang Jakarta.",
+      "emailAria": "Alamat email",
+      "emailPlaceholder": "Masukkan email Anda",
+      "subscribe": "Berlangganan",
+      "success": "Terima kasih sudah berlangganan. Nantikan kabar kami berikutnya.",
+      "invalid": "Masukkan alamat email yang valid."
+    },
+    "contact": "Kontak",
+    "copyright": "©{{year}} Hak Cipta Dilindungi oleh AureHotel"
   },
   "currency": {
     "choose": "Pilih mata uang",

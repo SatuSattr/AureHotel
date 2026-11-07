@@ -22,14 +22,14 @@ export default function MobileMenu({ open, onNavigate }) {
       ))}
       <a
         className="rounded-[10px] px-3.5 py-[13px] text-[15px] font-medium hover:bg-field"
-        href="#request"
+        href="#about"
         onClick={onNavigate}
       >
-        {t("nav.request")}
+        {t("nav.contact")}
       </a>
       <a
         className="mt-1.5 inline-flex items-center justify-center rounded-xl bg-brown px-5 py-3.5 text-[15px] font-semibold text-white hover:bg-brown-deep"
-        href="#booking"
+        href="#request"
         onClick={onNavigate}
       >
         {t("nav.bookNow")}

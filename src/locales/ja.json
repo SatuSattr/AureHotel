@@ -5,10 +5,11 @@
   },
   "nav": {
     "primary": "メインナビ",
-    "offer": "オファー",
     "home": "ホーム",
-    "images": "写真",
-    "request": "リクエスト",
+    "rooms": "客室",
+    "gallery": "ギャラリー",
+    "about": "私たちについて",
+    "contact": "お問い合わせ",
     "bookNow": "今すぐ予約",
     "openMenu": "メニューを開く",
     "closeMenu": "メニューを閉じる",
@@ -36,7 +37,48 @@
       "missingDates": "チェックインとチェックアウトの日付を選択してください。",
       "missingGuests": "人数を選択してください。"
     },
-    "success": "ありがとうございます。{{guests}} {{guestLabel}}・{{nights}} {{nightLabel}} について、コンシェルジュよりご連絡いたします。"
+    "success": "ありがとうございます。{{guests}} {{guestLabel}}・{{nights}} {{nightLabel}} について、コンシェルジュよりご連絡いたします。",
+    "form": {
+      "title": "ご滞在を予約",
+      "subtitle": "ご滞在のご希望をお聞かせください。お客様だけのプランをご用意いたします。",
+      "name": "ご予約者名",
+      "namePlaceholder": "ご予約者名を入力してください...",
+      "gender": "性別",
+      "male": "男性",
+      "female": "女性",
+      "identity": "本人確認番号",
+      "identityPlaceholder": "16桁",
+      "roomType": "客室タイプ",
+      "pricePerNight": "1泊あたりの料金",
+      "date": "予約日",
+      "datePlaceholder": "dd/mm/yyyy",
+      "calendar": {
+        "choose": "予約日を選択",
+        "select": "予約日を選択してください",
+        "selected": "予約日：{{date}}"
+      },
+      "duration": "宿泊数",
+      "durationPlaceholder": "例：3",
+      "breakfast": "朝食付き",
+      "breakfastHint": "1泊あたり +{{price}}",
+      "total": "お支払い総額",
+      "totalPlaceholder": "「合計金額を計算」をクリック",
+      "calculate": "合計金額を計算",
+      "note": "3泊を超えるご滞在は室料が10%割引になります。朝食は1泊ごとの料金です。最大30泊までです。",
+      "roomLine": "客室（{{count}} 泊）",
+      "breakfastLine": "朝食（{{count}} 泊）",
+      "discount": "室料 10% 割引",
+      "calculated": "お支払い総額を計算しました：{{total}}",
+      "errors": {
+        "name": "ご予約者名を入力してください。",
+        "nameMin": "ご予約者名は3文字以上で入力してください。",
+        "gender": "性別を選択してください。",
+        "identity": "入力エラー..データは16桁である必要があります",
+        "date": "日付を dd/mm/yyyy 形式で入力してください。",
+        "nights": "数字を入力してください",
+        "nightsMax": "最大30泊までです。"
+      }
+    }
   },
   "guests": {
     "option_other": "{{count}} 名"
@@ -94,6 +136,28 @@
       }
     }
   },
+  "about": {
+    "subtitle": "私たちと私たちの家についての小さな物語と情報",
+    "title": "メンテンにある<br/>静かな隠れ家",
+    "description": "<strong>AureHotel</strong> は、ジャカルタ・メンテンの緑豊かな通りに佇むブティックリゾートです。1970年代の邸宅を改装した建物に、温かな木材、天然石、柔らかなリネンを取り入れ、静かで細やかなおもてなしを添えています。中庭、小さなライブラリー、朝の光が差し込む客室など、どこかで自然と歩みが緩むように設計されています。良い滞在とは華やかさではなく、小さなことを丁寧に積み重ねることだと私たちは考えています。",
+    "description2": "一週間の出張でも、のんびりとした週末旅行でも、最初のウェルカムドリンクから最後のモーニングコーヒーまで、私たちのチームが寄り添います。空港送迎、プライベートダイニング、ランドリー、地元のおすすめなども手配できます。私たちが家と呼ぶこの街の話も、ぜひお聞かせください。",
+    "contactTitle": "お問い合わせ",
+    "addressLabel": "住所",
+    "phoneLabel": "電話",
+    "emailLabel": "メール"
+  },
+  "gallery": {
+    "title": "私たちの瞬間を巡る",
+    "subtitle": "ご到着前に、ホテルの温かな雰囲気とパノラマの美しさをお楽しみください。",
+    "items": {
+      "dining": { "alt": "水辺を見渡すダイニングテラス" },
+      "pool": { "alt": "夕暮れに輝くプール" },
+      "vineyard": { "alt": "ワイングラスとぶどう畑" },
+      "room": { "alt": "ふかふかのベッドがある客室" },
+      "aerial": { "alt": "リゾートプールの空撮" },
+      "lavender": { "alt": "夕暮れのラベンダー畑" }
+    }
+  },
   "stay": {
     "title": "理想の滞在と<br/>最高の価値を見つけましょう",
     "lede": "スマートなスタンダードルームから広々としたファミリースイートまで、すべての客室は心地よくお過ごしいただけるよう設計されています。",
@@ -131,6 +195,27 @@
       "maxNights": "最大 {{count}} 泊",
       "breakfastNote": "朝食は全客室タイプ共通で1泊あたり {{price}} です。"
     }
+  },
+  "footer": {
+    "information": "インフォメーション",
+    "links": {
+      "home": "ホーム",
+      "about": "私たちについて",
+      "rooms": "客室",
+      "gallery": "ギャラリー",
+      "contact": "お問い合わせ"
+    },
+    "newsletter": {
+      "title": "ニュースレター",
+      "text": "限定オファーや季節の旅、ジャカルタの静かな一角をお届けします。",
+      "emailAria": "メールアドレス",
+      "emailPlaceholder": "メールアドレスを入力",
+      "subscribe": "登録する",
+      "success": "ご登録ありがとうございます。次回のご案内をお楽しみに。",
+      "invalid": "有効なメールアドレスを入力してください。"
+    },
+    "contact": "お問い合わせ",
+    "copyright": "©{{year}} AureHotel 無断転載を禁じます"
   },
   "currency": {
     "choose": "通貨を選択",

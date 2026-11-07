@@ -5,10 +5,11 @@
   },
   "nav": {
     "primary": "主导航",
-    "offer": "优惠",
     "home": "首页",
-    "images": "图片",
-    "request": "咨询",
+    "rooms": "客房",
+    "gallery": "相册",
+    "about": "关于我们",
+    "contact": "联系我们",
     "bookNow": "立即预订",
     "openMenu": "打开菜单",
     "closeMenu": "关闭菜单",
@@ -36,7 +37,48 @@
       "missingDates": "请选择入住和退房日期。",
       "missingGuests": "请选择住客人数。"
     },
-    "success": "谢谢！我们的礼宾团队将尽快回复您关于 {{guests}} {{guestLabel}}、{{nights}} {{nightLabel}} 的咨询。"
+    "success": "谢谢！我们的礼宾团队将尽快回复您关于 {{guests}} {{guestLabel}}、{{nights}} {{nightLabel}} 的咨询。",
+    "form": {
+      "title": "预订您的住宿",
+      "subtitle": "告诉我们您的住宿需求，我们将很乐意为您准备专属方案。",
+      "name": "预订人姓名",
+      "namePlaceholder": "请在此填写预订人姓名...",
+      "gender": "性别",
+      "male": "男性",
+      "female": "女性",
+      "identity": "身份证件号码",
+      "identityPlaceholder": "16 位数字",
+      "roomType": "房型",
+      "pricePerNight": "每晚价格",
+      "date": "预订日期",
+      "datePlaceholder": "dd/mm/yyyy",
+      "calendar": {
+        "choose": "选择预订日期",
+        "select": "请选择预订日期",
+        "selected": "预订日期：{{date}}"
+      },
+      "duration": "入住时长",
+      "durationPlaceholder": "例如 3",
+      "breakfast": "包含早餐",
+      "breakfastHint": "每晚 +{{price}}",
+      "total": "总付款",
+      "totalPlaceholder": "点击计算总付款",
+      "calculate": "计算总付款",
+      "note": "入住超过 3 晚可享房费 9 折优惠。早餐按每晚计算。最长入住 30 晚。",
+      "roomLine": "客房（{{count}} 晚）",
+      "breakfastLine": "早餐（{{count}} 晚）",
+      "discount": "房费 9 折",
+      "calculated": "总付款已计算：{{total}}",
+      "errors": {
+        "name": "请填写预订人姓名。",
+        "nameMin": "预订人姓名至少需要 3 个字符。",
+        "gender": "请选择性别。",
+        "identity": "输入有误..数据必须为 16 位数字",
+        "date": "请按 dd/mm/yyyy 格式填写有效日期。",
+        "nights": "必须填写数字",
+        "nightsMax": "最长入住 30 晚。"
+      }
+    }
   },
   "guests": {
     "option_other": "{{count}} 位住客"
@@ -94,6 +136,28 @@
       }
     }
   },
+  "about": {
+    "subtitle": "关于我们和我们的家的一点故事与信息",
+    "title": "门腾的一处<br/>静谧角落",
+    "description": "<strong>AureHotel</strong> 是一间隐匿于雅加达门腾绿荫街巷中的精品度假酒店，坐落在一栋经过修复的 1970 年代宅邸内。酒店将温暖木材、天然石材与柔软亚麻相结合，并以从容细致的服务相衬。每个角落都为放慢脚步而设计：静谧庭院、小巧图书室，以及迎接晨光的客房。我们相信，美好的住宿不在于华丽排场，而在于把每一件小事都认真做好。",
+    "description2": "无论您是来工作一周，还是悠闲度过周末，我们的团队都会从第一杯欢迎饮品到最后的一杯晨间咖啡全程相伴。我们可以安排机场接送、私人用餐、洗衣服务与本地推荐，也乐于与您分享这个我们称之为家的街区。",
+    "contactTitle": "联系方式",
+    "addressLabel": "地址",
+    "phoneLabel": "电话",
+    "emailLabel": "邮箱"
+  },
+  "gallery": {
+    "title": "探索我们的精彩瞬间",
+    "subtitle": "在抵达之前，先感受酒店温暖的氛围与全景之美。",
+    "items": {
+      "dining": { "alt": "临水用餐露台" },
+      "pool": { "alt": "黄昏时分的泳池" },
+      "vineyard": { "alt": "葡萄园与一杯葡萄酒" },
+      "room": { "alt": "配有柔软大床的客房" },
+      "aerial": { "alt": "度假村泳池的空中景观" },
+      "lavender": { "alt": "日落时分的薰衣草田" }
+    }
+  },
   "stay": {
     "title": "找到您的理想住宿<br/>与最佳价值",
     "lede": "从精巧的标准客房到宽敞的家庭套房，每一间都以您的休憩方式为设计核心。",
@@ -131,6 +195,27 @@
       "maxNights": "最多 {{count}} 晚",
       "breakfastNote": "所有房型早餐均为每晚 {{price}}。"
     }
+  },
+  "footer": {
+    "information": "信息",
+    "links": {
+      "home": "首页",
+      "about": "关于我们",
+      "rooms": "客房",
+      "gallery": "相册",
+      "contact": "联系我们"
+    },
+    "newsletter": {
+      "title": "订阅通讯",
+      "text": "订阅以获取专属优惠、季节度假灵感与雅加达的静谧角落。",
+      "emailAria": "电子邮箱",
+      "emailPlaceholder": "输入您的邮箱",
+      "subscribe": "订阅",
+      "success": "感谢订阅。请留意我们接下来的优惠信息。",
+      "invalid": "请输入有效的电子邮箱地址。"
+    },
+    "contact": "联系方式",
+    "copyright": "©{{year}} AureHotel 保留所有权利"
   },
   "currency": {
     "choose": "选择货币",
