@@ -55,6 +55,11 @@
     "clear": "清除",
     "weekdays": ["日", "一", "二", "三", "四", "五", "六"]
   },
+  "trusted": {
+    "title": "深受领先品牌信赖。",
+    "subtitle": "获权威机构保障。",
+    "logosAria": "信赖的合作伙伴"
+  },
   "language": {
     "changed": "语言已切换为 {{language}}"
   }

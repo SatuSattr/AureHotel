@@ -24,7 +24,7 @@ src/
   index.css                 Tailwind entry, theme tokens, component styles
   i18n.js                   i18next setup + language persistence
   locales/                  Translation dictionaries (en, id, zh, ja)
-  assets/                   Hero image + reviewer avatars
+  assets/                   Hero image, reviewer avatars, partner logos
   data/hotel.js             Brand, nav links, languages, guest options
   utils/date.js             Date helpers for the range calendar
   hooks/
@@ -38,6 +38,7 @@ src/
     Hero.jsx                Hero section layout
     HeroContent.jsx         Rating, headline and intro copy
     RatingBadge.jsx         Avatars, stars and "Top-rated" label
+    TrustedBy.jsx           Monochrome partner logo strip
     BookingBar.jsx          Booking form + validation
     GuestPicker.jsx         Guest count dropdown
     DateRangePicker.jsx     Check-in / check-out range calendar

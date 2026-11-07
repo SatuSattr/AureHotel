@@ -55,6 +55,11 @@
     "clear": "クリア",
     "weekdays": ["日", "月", "火", "水", "木", "金", "土"]
   },
+  "trusted": {
+    "title": "一流ブランドから信頼されています。",
+    "subtitle": "公的機関にも認められています。",
+    "logosAria": "信頼のパートナー"
+  },
   "language": {
     "changed": "言語を {{language}} に変更しました"
   }

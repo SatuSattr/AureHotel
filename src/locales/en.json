@@ -59,6 +59,11 @@
     "clear": "Clear",
     "weekdays": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
   },
+  "trusted": {
+    "title": "Trusted by Leading Brands.",
+    "subtitle": "Protected by Authorities.",
+    "logosAria": "Trusted partners"
+  },
   "language": {
     "changed": "Language switched to {{language}}"
   }

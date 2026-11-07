@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import "./i18n.js";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
+import TrustedBy from "./components/TrustedBy.jsx";
 import { ToastProvider } from "./hooks/useToast.jsx";
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <TrustedBy />
       </main>
     </ToastProvider>
   );

@@ -55,6 +55,11 @@
     "clear": "Hapus",
     "weekdays": ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"]
   },
+  "trusted": {
+    "title": "Dipercaya oleh Merek Terkemuka.",
+    "subtitle": "Dilindungi oleh Otoritas.",
+    "logosAria": "Mitra terpercaya"
+  },
   "language": {
     "changed": "Bahasa diubah ke {{language}}"
   }
