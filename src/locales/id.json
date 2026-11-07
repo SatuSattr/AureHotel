@@ -60,6 +60,85 @@
     "subtitle": "Dilindungi oleh Otoritas.",
     "logosAria": "Mitra terpercaya"
   },
+  "reviews": {
+    "aria": "Ulasan tamu",
+    "show": "Tampilkan ulasan dari {{name}}",
+    "items": {
+      "daniel": {
+        "quote": "Lokasinya sempurna untuk menjelajahi kota, namun kamar tetap <strong>sangat tenang di malam hari</strong>. Tempat tidurnya luar biasa nyaman dan concierge membantu kami merencanakan setiap hari. <strong>Permata sungguhan di Menteng.</strong>",
+        "location": "Seoul, Korea Selatan"
+      },
+      "sofia": {
+        "quote": "Dari welcome drink hingga kopi pagi terakhir, semuanya terasa <strong>penuh perhatian dan personal</strong>. Pemandangan taman membuat sarapan terasa seperti liburan kecil. <strong>Saya hanya berharap bisa menginap lebih lama.</strong>",
+        "location": "Milan, Italia"
+      },
+      "lucas": {
+        "quote": "Garis bersih, pencahayaan hangat, dan <strong>pelayanan yang sungguh ramah</strong>. Saya tidur lebih nyenyak di sini dibandingkan berminggu-minggu terakhir. Lingkungannya nyaman untuk berjalan kaki dan penuh kedai kopi enak. <strong>Sudah merencanakan kunjungan berikutnya.</strong>",
+        "location": "Berlin, Jerman"
+      },
+      "emily": {
+        "quote": "Saya menginap seminggu di hotel ini dan semuanya <strong>melebihi ekspektasi saya</strong>. Stafnya hangat, kamarnya bersih sekali, dan sarapannya punya banyak pilihan lezat. <strong>Saya pasti akan kembali.</strong>",
+        "location": "London, Inggris"
+      },
+      "aisha": {
+        "quote": "Kamarnya indah, tetapi detail kecillah yang membuat saya jatuh hati: bunga segar, catatan tulisan tangan, dan <strong>sarapan yang disajikan persis seperti yang saya suka</strong>. <strong>Saya merasa di rumah sejak jam pertama.</strong>",
+        "location": "Kuala Lumpur, Malaysia"
+      },
+      "yuki": {
+        "quote": "Setiap sudut hotel terasa tenang dan dipikirkan matang. Shower hujannya luar biasa dan <strong>tempat tidurnya sangat nyaman</strong>. Saya menghargai betapa tenangnya tim ini memperhatikan tamu. <strong>Basis sempurna untuk menjelajahi Jakarta.</strong>",
+        "location": "Tokyo, Jepang"
+      },
+      "marcus": {
+        "quote": "Saya memesan suite keluarga untuk perjalanan kerja dan akhirnya memperpanjang masa menginap. Wi-Fi cepat, meja kerja yang layak, dan <strong>staf yang memahami kebutuhan Anda</strong>. <strong>Jelas hotel favorit saya di Jakarta.</strong>",
+        "location": "Sydney, Australia"
+      }
+    }
+  },
+  "stay": {
+    "title": "Temukan Penginapan<br/>Sempurna & Nilai Terbaik",
+    "lede": "Dari kamar standard yang cerdas hingga suite keluarga yang luas, setiap penginapan dirancang untuk cara Anda beristirahat.",
+    "from": "Mulai",
+    "perNight": "/ malam",
+    "request": "Tanya",
+    "book": "Pesan",
+    "previous": "Kamar sebelumnya",
+    "next": "Kamar berikutnya",
+    "rooms": {
+      "standard": {
+        "title": "Kamar Standard",
+        "description": "Kamar mungil yang terang dengan tempat tidur queen yang nyaman, shower hujan, dan semua yang Anda butuhkan untuk menginap praktis di kota."
+      },
+      "deluxe": {
+        "title": "Kamar Deluxe",
+        "description": "Ruang lebih lapang, meja kerja yang luas, dan jendela dari lantai ke langit-langit menghadap jalanan rindang Menteng."
+      },
+      "family": {
+        "title": "Suite Keluarga",
+        "description": "Dua kamar terhubung, ruang santai bersama, dan sentuhan ramah untuk si kecil — cukup ruang agar semua merasa di rumah."
+      }
+    },
+    "rates": {
+      "title": "Bandingkan tarif kamar",
+      "lede": "Pilih lama menginap Anda — total harga diperbarui otomatis.",
+      "room": "Tipe kamar",
+      "guests": "Maks. tamu",
+      "duration": "Durasi",
+      "roomOnly": "Tanpa sarapan",
+      "breakfast": "Dengan sarapan",
+      "nights_other": "{{count}} malam",
+      "decrease": "Kurangi malam",
+      "increase": "Tambah malam",
+      "maxNights": "Maksimal {{count}} malam",
+      "breakfastNote": "Sarapan {{price}} per malam untuk semua tipe kamar."
+    }
+  },
+  "currency": {
+    "choose": "Pilih mata uang",
+    "search": "Cari mata uang",
+    "listAria": "Mata uang tersedia",
+    "noResults": "Mata uang tidak ditemukan",
+    "changed": "Mata uang diubah ke {{currency}}"
+  },
   "language": {
     "changed": "Bahasa diubah ke {{language}}"
   }

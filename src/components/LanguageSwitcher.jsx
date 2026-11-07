@@ -39,7 +39,7 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen((current) => !current)}
       >
         <Globe className="icon icon-sm" aria-hidden="true" />
-        <span className="max-[760px]:hidden">{currentLanguage.label}</span>
+        <span className="max-[1320px]:hidden">{currentLanguage.label}</span>
         <ChevronDown
           className="icon icon-xs caret ml-0.5 opacity-75 transition-transform"
           aria-hidden="true"

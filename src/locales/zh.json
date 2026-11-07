@@ -60,6 +60,85 @@
     "subtitle": "获权威机构保障。",
     "logosAria": "信赖的合作伙伴"
   },
+  "reviews": {
+    "aria": "住客评价",
+    "show": "查看 {{name}} 的评价",
+    "items": {
+      "daniel": {
+        "quote": "这里的位置非常适合探索城市，但夜晚房间却<strong>格外安静</strong>。床铺舒适得难以置信，礼宾团队还帮我们规划了每天的行程。<strong>门腾的一颗真正的明珠。</strong>",
+        "location": "首尔，韩国"
+      },
+      "sofia": {
+        "quote": "从欢迎饮品到最后一杯晨间咖啡，一切都显得<strong>体贴而个性化</strong>。花园景观让早餐像一次小小的度假。<strong>只希望能多住几天。</strong>",
+        "location": "米兰，意大利"
+      },
+      "lucas": {
+        "quote": "简洁的线条、温暖的灯光，以及<strong>真诚友善的服务</strong>。我在这里睡得比过去几周都好。街区适合步行，咖啡馆也很棒。<strong>已经在计划下次入住。</strong>",
+        "location": "柏林，德国"
+      },
+      "emily": {
+        "quote": "我在这家酒店住了一周，一切都<strong>超出了我的预期</strong>。员工热情友善，房间一尘不染，早餐也有许多美味选择。<strong>我一定会再回来。</strong>",
+        "location": "伦敦，英国"
+      },
+      "aisha": {
+        "quote": "房间很美，但真正打动我的是那些小细节：鲜花、手写便条，以及<strong>完全按照我的喜好准备的早餐</strong>。<strong>从第一小时起我就有了家的感觉。</strong>",
+        "location": "吉隆坡，马来西亚"
+      },
+      "yuki": {
+        "quote": "酒店的每个角落都宁静而用心。雨淋花洒非常出色，<strong>床铺舒适至极</strong>。我很欣赏团队安静而细致的关照。<strong>探索雅加达的完美据点。</strong>",
+        "location": "东京，日本"
+      },
+      "marcus": {
+        "quote": "我出差时预订了家庭套房，最后还延长了住宿。网络很快，办公桌很实用，<strong>员工总能预判你的需求</strong>。<strong>毫无疑问是我在雅加达最喜欢的酒店。</strong>",
+        "location": "悉尼，澳大利亚"
+      }
+    }
+  },
+  "stay": {
+    "title": "找到您的理想住宿<br/>与最佳价值",
+    "lede": "从精巧的标准客房到宽敞的家庭套房，每一间都以您的休憩方式为设计核心。",
+    "from": "低至",
+    "perNight": "/ 晚",
+    "request": "咨询",
+    "book": "预订",
+    "previous": "上一间客房",
+    "next": "下一间客房",
+    "rooms": {
+      "standard": {
+        "title": "标准客房",
+        "description": "明亮舒适的小巧客房，配有柔软的大床、雨淋花洒，以及轻松城市住宿所需的一切。"
+      },
+      "deluxe": {
+        "title": "豪华客房",
+        "description": "更宽敞的活动空间、宽大的办公桌，以及俯瞰门腾绿荫街道的落地窗。"
+      },
+      "family": {
+        "title": "家庭套房",
+        "description": "两间相连的卧室、共享起居区，以及为小客人准备的贴心细节——让每个人都宾至如归。"
+      }
+    },
+    "rates": {
+      "title": "比较客房价格",
+      "lede": "选择入住时长，总价会自动更新。",
+      "room": "房型",
+      "guests": "最多住客",
+      "duration": "入住时长",
+      "roomOnly": "不含早餐",
+      "breakfast": "含早餐",
+      "nights_other": "{{count}} 晚",
+      "decrease": "减少晚数",
+      "increase": "增加晚数",
+      "maxNights": "最多 {{count}} 晚",
+      "breakfastNote": "所有房型早餐均为每晚 {{price}}。"
+    }
+  },
+  "currency": {
+    "choose": "选择货币",
+    "search": "搜索货币",
+    "listAria": "可用货币",
+    "noResults": "未找到货币",
+    "changed": "货币已切换为 {{currency}}"
+  },
   "language": {
     "changed": "语言已切换为 {{language}}"
   }

@@ -22,6 +22,11 @@ export function ToastProvider({ children }) {
     }, 3600);
   }, []);
 
+  const hideToast = useCallback(() => {
+    window.clearTimeout(timerRef.current);
+    setToast((current) => ({ ...current, visible: false }));
+  }, []);
+
   useEffect(
     () => () => {
       window.clearTimeout(timerRef.current);
@@ -32,7 +37,11 @@ export function ToastProvider({ children }) {
   return (
     <ToastContext.Provider value={showToast}>
       {children}
-      <Toast message={toast.message} visible={toast.visible} />
+      <Toast
+        message={toast.message}
+        visible={toast.visible}
+        onDismiss={hideToast}
+      />
     </ToastContext.Provider>
   );
 }

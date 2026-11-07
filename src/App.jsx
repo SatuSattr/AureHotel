@@ -3,7 +3,10 @@ import { useTranslation } from "react-i18next";
 import "./i18n.js";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
+import RoomsSection from "./components/RoomsSection.jsx";
+import ReviewsSection from "./components/ReviewsSection.jsx";
 import TrustedBy from "./components/TrustedBy.jsx";
+import { CurrencyProvider } from "./hooks/useCurrency.jsx";
 import { ToastProvider } from "./hooks/useToast.jsx";
 
 export default function App() {
@@ -20,11 +23,15 @@ export default function App() {
 
   return (
     <ToastProvider>
-      <Navbar />
-      <main>
-        <Hero />
-        <TrustedBy />
-      </main>
+      <CurrencyProvider>
+        <Navbar />
+        <main>
+          <Hero />
+          <TrustedBy />
+          <ReviewsSection />
+          <RoomsSection />
+        </main>
+      </CurrencyProvider>
     </ToastProvider>
   );
 }

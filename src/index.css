@@ -140,6 +140,43 @@
   background: var(--color-field);
 }
 
+/* Currency switcher */
+
+.currency__menu {
+  display: none;
+}
+
+.currency.is-open .currency__menu {
+  display: block;
+  animation: pop 0.18s ease both;
+}
+
+.currency.is-open .caret {
+  transform: rotate(180deg);
+}
+
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #d8d0c8 transparent;
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: #d8d0c8;
+  border-radius: 999px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #c3b8ae;
+}
+
 /* Mobile navigation */
 
 .mobile-menu {
@@ -431,13 +468,18 @@
   box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.55);
   opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, 16px);
-  transition: opacity 0.28s ease, transform 0.28s ease;
+  cursor: pointer;
+  user-select: none;
+  transform: translate(-50%, 18px) scale(0.96);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .toast.is-visible {
   opacity: 1;
-  transform: translate(-50%, 0);
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
 }
 
 /* ============================================================
@@ -466,6 +508,55 @@
   }
 }
 
+/* Room carousel card swap */
+
+.room-card--next {
+  animation: room-in-next 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.room-card--prev {
+  animation: room-in-prev 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes room-in-next {
+  from {
+    opacity: 0;
+    transform: translateX(28px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes room-in-prev {
+  from {
+    opacity: 0;
+    transform: translateX(-28px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Review quote swap */
+
+.review-fade {
+  animation: review-in 0.35s ease both;
+}
+
+@keyframes review-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -474,6 +565,13 @@
     animation-delay: 0ms !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Keep a short fade for status feedback without slide/scale motion. */
+  .toast {
+    transform: translate(-50%, 0) scale(1) !important;
+    transition-property: opacity !important;
+    transition-duration: 0.2s !important;
   }
 }
 

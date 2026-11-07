@@ -64,6 +64,86 @@
     "subtitle": "Protected by Authorities.",
     "logosAria": "Trusted partners"
   },
+  "reviews": {
+    "aria": "Guest reviews",
+    "show": "Show review from {{name}}",
+    "items": {
+      "daniel": {
+        "quote": "The location is perfect for exploring the city, yet the room stayed <strong>wonderfully quiet at night</strong>. The bed was incredibly comfortable and the concierge helped us plan every day. <strong>A real gem in Menteng.</strong>",
+        "location": "Seoul, South Korea"
+      },
+      "sofia": {
+        "quote": "From the welcome drink to the final morning coffee, everything felt <strong>thoughtful and personal</strong>. The garden view made breakfast feel like a mini holiday. <strong>I only wish I could have stayed longer.</strong>",
+        "location": "Milan, Italy"
+      },
+      "lucas": {
+        "quote": "Clean lines, warm lighting and <strong>genuinely kind service</strong>. I slept better here than I have in weeks. The neighbourhood is walkable and full of great coffee. <strong>Already planning my next visit.</strong>",
+        "location": "Berlin, Germany"
+      },
+      "emily": {
+        "quote": "I stayed at this hotel for a week and everything <strong>exceeded my expectations</strong>. The staff were warm, the room was spotless, and the breakfast had so many delicious options. <strong>I'll definitely come back.</strong>",
+        "location": "London, UK"
+      },
+      "aisha": {
+        "quote": "The room was beautiful, but it was the little details that won me over: fresh flowers, a handwritten note and <strong>breakfast served exactly how I like it</strong>. <strong>I felt at home from the first hour.</strong>",
+        "location": "Kuala Lumpur, Malaysia"
+      },
+      "yuki": {
+        "quote": "Every corner of the hotel feels calm and considered. The rain shower was superb and <strong>the bed was pure comfort</strong>. I appreciated how quietly attentive the team was. <strong>A perfect base for Jakarta.</strong>",
+        "location": "Tokyo, Japan"
+      },
+      "marcus": {
+        "quote": "I booked the family suite for a work trip and ended up extending my stay. Fast Wi-Fi, a proper desk and <strong>staff who anticipate what you need</strong>. <strong>Easily my favourite hotel in Jakarta.</strong>",
+        "location": "Sydney, Australia"
+      }
+    }
+  },
+  "stay": {
+    "title": "Find Your Perfect<br/>Stay & Best Value",
+    "lede": "From smart standard rooms to generous family suites, every stay is shaped around the way you love to rest.",
+    "from": "From",
+    "perNight": "/ night",
+    "request": "Request",
+    "book": "Book",
+    "previous": "Previous room",
+    "next": "Next room",
+    "rooms": {
+      "standard": {
+        "title": "Standard Room",
+        "description": "A cosy, light-filled room with a plush queen bed, rain shower and everything you need for an easy city stay."
+      },
+      "deluxe": {
+        "title": "Deluxe Room",
+        "description": "More space to spread out, a generous work desk and floor-to-ceiling windows overlooking the leafy streets of Menteng."
+      },
+      "family": {
+        "title": "Family Suite",
+        "description": "Two connected bedrooms, a shared lounge and thoughtful touches for little guests — room for everyone to feel at home."
+      }
+    },
+    "rates": {
+      "title": "Compare room rates",
+      "lede": "Pick how long you'd like to stay and totals update as you go.",
+      "room": "Room type",
+      "guests": "Max guests",
+      "duration": "Duration",
+      "roomOnly": "Room only",
+      "breakfast": "With breakfast",
+      "nights_one": "{{count}} night",
+      "nights_other": "{{count}} nights",
+      "decrease": "Decrease nights",
+      "increase": "Increase nights",
+      "maxNights": "Maximum {{count}} nights",
+      "breakfastNote": "Breakfast is {{price}} per night for every room type."
+    }
+  },
+  "currency": {
+    "choose": "Choose currency",
+    "search": "Search currency",
+    "listAria": "Available currencies",
+    "noResults": "No currencies found",
+    "changed": "Currency switched to {{currency}}"
+  },
   "language": {
     "changed": "Language switched to {{language}}"
   }

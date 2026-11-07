@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "../data/hotel.js";
 import { useDismiss } from "../hooks/useDismiss.js";
 import Brand from "./Brand.jsx";
+import CurrencySwitcher from "./CurrencySwitcher.jsx";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
 import MobileMenu from "./MobileMenu.jsx";
 
@@ -23,7 +24,10 @@ export default function Navbar() {
       id="nav"
     >
       <div className="flex items-center gap-[clamp(18px,2.4vw,34px)]">
-        <LanguageSwitcher />
+        <div className="flex items-center gap-[clamp(12px,1.4vw,20px)]">
+          <LanguageSwitcher />
+          <CurrencySwitcher />
+        </div>
 
         <nav
           className="flex items-center gap-[clamp(18px,2.4vw,34px)] max-[960px]:hidden"

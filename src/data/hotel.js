@@ -16,4 +16,25 @@ export const LANGUAGES = [
   { code: "ja", label: "日本語" },
 ];
 
+export const CURRENCIES = [
+  "USD",
+  "EUR",
+  "GBP",
+  "JPY",
+  "AUD",
+  "CAD",
+  "CHF",
+  "CNY",
+  "SGD",
+  "MYR",
+  "THB",
+  "HKD",
+  "KRW",
+  "INR",
+  "AED",
+  "IDR",
+];
+
+export const DEFAULT_CURRENCY = "IDR";
+
 export const GUEST_OPTIONS = [1, 2, 3, 4, 5, 6];

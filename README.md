@@ -20,25 +20,37 @@ index.html
 vite.config.js
 src/
   main.jsx                  React entry point
-  App.jsx                   Page shell + ToastProvider + document meta
+  App.jsx                   Page shell + providers + document meta
   index.css                 Tailwind entry, theme tokens, component styles
   i18n.js                   i18next setup + language persistence
   locales/                  Translation dictionaries (en, id, zh, ja)
   assets/                   Hero image, reviewer avatars, partner logos
-  data/hotel.js             Brand, nav links, languages, guest options
+  assets/rooms/             Room photos used by the carousel
+  assets/reviews/           Guest avatars used by the review selector
+  data/hotel.js             Brand, nav links, languages, currencies, guests
+  data/rooms.js             Room records, IDR base prices, image imports
+  data/reviews.js           Guest names, avatars and default review
   utils/date.js             Date helpers for the range calendar
+  utils/currency.js         Localized currency names + price formatting
   hooks/
     useDismiss.js           Close on outside click / Escape
+    useCurrency.jsx         Currency context + localStorage persistence
     useToast.jsx            Toast context + provider
   components/
     Navbar.jsx              Desktop + mobile navigation shell
     Brand.jsx               Centered wordmark and colour swatches
     LanguageSwitcher.jsx    Language dropdown
+    CurrencySwitcher.jsx    Searchable currency dropdown
     MobileMenu.jsx          Collapsible mobile menu
     Hero.jsx                Hero section layout
     HeroContent.jsx         Rating, headline and intro copy
     RatingBadge.jsx         Avatars, stars and "Top-rated" label
     TrustedBy.jsx           Monochrome partner logo strip
+    ReviewsSection.jsx      Guest quote card + avatar selector
+    RoomsSection.jsx        "Find your perfect stay" heading + carousel
+    RoomsCarousel.jsx       Active room, side previews and arrows
+    RoomCard.jsx            Room photo, price pill, details and CTAs
+    RoomRateTable.jsx       Rate comparison table + dynamic nights stepper
     BookingBar.jsx          Booking form + validation
     GuestPicker.jsx         Guest count dropdown
     DateRangePicker.jsx     Check-in / check-out range calendar
@@ -70,6 +82,22 @@ import { Trans } from "react-i18next";
 ```
 
 Plural keys use i18next's `_one` / `_other` suffixes. For languages with a single plural form (Indonesian, Chinese, Japanese), only `_other` is needed. New sections should follow this pattern so they automatically work in every supported language.
+
+## Currency
+
+The navbar currency switcher offers 16 common currencies. The active code is persisted in `localStorage` under `aurehotel.currency`, pinned as the first row of the dropdown, and full currency names are localized with `Intl.DisplayNames`. Use the shared hook in future sections:
+
+```jsx
+import { useCurrency } from "./hooks/useCurrency.jsx";
+
+const { currency, setCurrency } = useCurrency();
+```
+
+## Rooms carousel
+
+The third section (`RoomsSection.jsx`) shows one active room at a time, with the previous and next room as side previews on desktop and circular arrow controls on smaller screens. Room records live in `src/data/rooms.js`; prices are stored in IDR and converted to the active navbar currency with `formatPrice()` from `src/utils/currency.js`. Copy and room names come from the `stay.*` keys in every locale.
+
+Below the carousel, `RoomRateTable.jsx` compares all room types with dynamic stay prices. The duration stepper adjusts the number of nights and every price recalculates instantly; breakfast adds Rp 80,000 per night to every room type. Hovering a room row previews that room in the carousel above.
 
 ## Notes
 
