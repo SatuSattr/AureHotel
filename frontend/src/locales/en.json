@@ -22,6 +22,8 @@
   "hero": {
     "ratingAria": "Rated 5 out of 5 stars",
     "ratingLabel": "Top-rated by visitors",
+    "pauseVideo": "Pause background video",
+    "playVideo": "Play background video",
     "title": "Your <strong>Feel-Good</strong><br/><strong>Hotel</strong> in Jakarta",
     "lede": "Naturally warm. Refreshingly calm.<br/> Discover a boutique retreat in Menteng, Jakarta<br/> where city energy, quiet comfort and genuine hospitality meet."
   },

@@ -6,7 +6,7 @@ import { formatPrice } from "../utils/currency.js";
 export default function RoomCard({ room, direction }) {
   const { t, i18n } = useTranslation();
   const { highlightBookButtons, selectRoom } = useBookingFlow();
-  const { currency } = useCurrency();
+  const { currency, rates } = useCurrency();
   const locale = i18n.resolvedLanguage || i18n.language || "en";
   const title = t(room.titleKey);
 
@@ -30,7 +30,7 @@ export default function RoomCard({ room, direction }) {
         <div className="absolute right-3 top-3 flex items-center gap-1.5 whitespace-nowrap rounded-full bg-white/95 px-3.5 py-1.5 text-[11.5px] shadow-[0_8px_20px_-10px_rgba(0,0,0,0.5)] backdrop-blur">
           <span className="font-medium text-ink-soft">{t("stay.from")}</span>
           <strong className="font-bold text-ink">
-            {formatPrice(room.price, currency, locale)}
+            {formatPrice(room.price, currency, locale, rates)}
           </strong>
           <span className="font-medium text-ink-soft">{t("stay.perNight")}</span>
         </div>

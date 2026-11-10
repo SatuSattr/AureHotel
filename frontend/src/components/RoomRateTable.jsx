@@ -15,10 +15,10 @@ const STEPPER_BUTTON_CLASSES =
 export default function RoomRateTable({ onHoverRoom }) {
   const [nights, setNights] = useState(1);
   const { t, i18n } = useTranslation();
-  const { currency } = useCurrency();
+  const { currency, rates } = useCurrency();
   const locale = i18n.resolvedLanguage || i18n.language || "en";
 
-  const money = (amount) => formatPrice(amount, currency, locale);
+  const money = (amount) => formatPrice(amount, currency, locale, rates);
   const nightsLabel = t("stay.rates.nights", { count: nights });
 
   const changeNights = (step) =>

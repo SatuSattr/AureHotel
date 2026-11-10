@@ -2,10 +2,12 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from "react";
 import { CURRENCIES, DEFAULT_CURRENCY } from "../data/hotel.js";
+import { FALLBACK_IDR_RATES, fetchIdrRates } from "../utils/currency.js";
 
 const STORAGE_KEY = "aurehotel.currency";
 const CurrencyContext = createContext(null);
@@ -25,6 +27,19 @@ function getInitialCurrency() {
 
 export function CurrencyProvider({ children }) {
   const [currency, setCurrencyState] = useState(getInitialCurrency);
+  const [rates, setRates] = useState(FALLBACK_IDR_RATES);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchIdrRates(controller.signal)
+      .then(setRates)
+      .catch(() => {
+        // Keep the static fallback rates when both endpoints are unavailable.
+      });
+
+    return () => controller.abort();
+  }, []);
 
   const setCurrency = useCallback((code) => {
     if (!CURRENCIES.includes(code)) return;
@@ -39,8 +54,8 @@ export function CurrencyProvider({ children }) {
   }, []);
 
   const value = useMemo(
-    () => ({ currency, setCurrency }),
-    [currency, setCurrency]
+    () => ({ currency, setCurrency, rates }),
+    [currency, setCurrency, rates]
   );
 
   return (

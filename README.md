@@ -4,65 +4,78 @@ Navbar and hero section recreated from the reference screenshot and rebranded as
 
 Migrated to **Vite + React 19 + Tailwind CSS v4**, with the UI split into small, reusable components.
 
+The repository is split into a frontend app and a backend workspace:
+
+```
+frontend/   Vite + React application (this README)
+backend/    reserved for the future API/server (currently empty)
+```
+
 ## Getting started
 
 ```bash
+cd frontend
 npm install
 npm run dev       # http://localhost:5173
-npm run build     # production build in dist/
+npm run build     # production build in frontend/dist/
 npm run preview   # preview the production build
 ```
 
 ## Project structure
 
 ```
-index.html
-vite.config.js
-src/
-  main.jsx                  React entry point
-  App.jsx                   Page shell + providers + document meta
-  index.css                 Tailwind entry, theme tokens, component styles
-  i18n.js                   i18next setup + language persistence
-  locales/                  Translation dictionaries (en, id, zh, ja)
-  assets/                   Hero image, reviewer avatars, partner logos
-  assets/rooms/             Room photos used by the carousel
-  assets/gallery/           Hotel gallery photos used by the moments grid
-  assets/reviews/           Guest avatars used by the review selector
-  data/hotel.js             Brand, nav links, languages, currencies, guests
-  data/rooms.js             Room records, IDR base prices, image imports
-  data/reviews.js           Guest names, avatars and default review
-  utils/date.js             Date helpers for the range calendar
-  utils/currency.js         Localized currency names + price formatting
-  hooks/
-    useDismiss.js           Close on outside click / Escape
-    useCurrency.jsx         Currency context + localStorage persistence
-    useToast.jsx            Toast context + provider
-  components/
-    Navbar.jsx              Desktop + mobile navigation shell
-    Brand.jsx               Centered wordmark and colour swatches
-    LanguageSwitcher.jsx    Language dropdown
-    CurrencySwitcher.jsx    Searchable currency dropdown
-    MobileMenu.jsx          Collapsible mobile menu
-    Hero.jsx                Hero section layout
-    HeroContent.jsx         Rating, headline and intro copy
-    RatingBadge.jsx         Avatars, stars and "Top-rated" label
-    TrustedBy.jsx           Monochrome partner logo strip
-    ReviewsSection.jsx      Guest quote card + avatar selector
-    RoomsSection.jsx        "Find your perfect stay" heading + carousel
-    GallerySection.jsx      "Explore our moments" asymmetric photo grid
-    RoomsCarousel.jsx       Active room, side previews and arrows
-    RoomCard.jsx            Room photo, price pill, details and CTAs
-    RoomRateTable.jsx       Rate comparison table + dynamic nights stepper
-    RoomTypePicker.jsx      Styled room-type dropdown for the booking form
-    SingleDatePicker.jsx    Single-date calendar for the booking form
-    AboutSection.jsx        About copy + address, phone and email card
-    BookingSection.jsx      Booking form with validation and total calculation
-    BookingBar.jsx          Hero booking bar + validation
-    Footer.jsx              Dark rounded footer, newsletter and contact details
-    GuestPicker.jsx         Guest count dropdown
-    DateRangePicker.jsx     Check-in / check-out range calendar
-    ui/
-      Toast.jsx             Toast presentation
+frontend/
+  index.html
+  vite.config.js
+  package.json
+  .gitignore
+  src/
+    main.jsx                  React entry point
+    App.jsx                   Page shell + providers + document meta
+    index.css                 Tailwind entry, theme tokens, component styles
+    i18n.js                   i18next setup + language persistence
+    locales/                  Translation dictionaries (en, id, zh, ja)
+    assets/                   Hero image/video, reviewer avatars, partner logos
+    assets/rooms/             Room photos used by the carousel
+    assets/gallery/           Hotel gallery photos used by the moments grid
+    assets/reviews/           Guest avatars used by the review selector
+    data/hotel.js             Brand, nav links, languages, currencies, guests
+    data/rooms.js             Room records, IDR base prices, image imports
+    data/reviews.js           Guest names, avatars and default review
+    utils/date.js             Date helpers for the range calendar
+    utils/currency.js         Currency names, live rate fetching + price formatting
+    hooks/
+      useDismiss.js           Close on outside click / Escape
+      useCurrency.jsx         Currency context, live rates + localStorage persistence
+      useToast.jsx            Toast context + provider
+    components/
+      Navbar.jsx              Desktop + mobile navigation shell
+      Brand.jsx               Centered wordmark and colour swatches
+      LanguageSwitcher.jsx    Language dropdown
+      CurrencySwitcher.jsx    Searchable currency dropdown
+      MobileMenu.jsx          Collapsible mobile menu
+      Hero.jsx                Hero section layout + background video controls
+      HeroContent.jsx         Rating, headline and intro copy
+      RatingBadge.jsx         Avatars, stars and "Top-rated" label
+      TrustedBy.jsx           Monochrome partner logo strip
+      ReviewsSection.jsx      Guest quote card + avatar selector
+      RoomsSection.jsx        "Find your perfect stay" heading + carousel
+      GallerySection.jsx      "Explore our moments" asymmetric photo grid
+      RoomsCarousel.jsx       Active room, side previews and arrows
+      RoomCard.jsx            Room photo, price pill, details and CTAs
+      RoomRateTable.jsx       Rate comparison table + dynamic nights stepper
+      RoomTypePicker.jsx      Styled room-type dropdown for the booking form
+      SingleDatePicker.jsx    Single-date calendar for the booking form
+      AboutSection.jsx        About copy + address, phone and email card
+      BookingSection.jsx      Booking form with validation and total calculation
+      BookingBar.jsx          Hero booking bar + validation
+      Footer.jsx              Dark rounded footer, newsletter and contact details
+      GuestPicker.jsx         Guest count dropdown
+      DateRangePicker.jsx     Check-in / check-out range calendar
+      ui/
+        Toast.jsx             Toast presentation
+backend/
+  .gitkeep                    Placeholder so the empty folder is tracked
 ```
 
 ## Internationalization
@@ -92,12 +105,21 @@ Plural keys use i18next's `_one` / `_other` suffixes. For languages with a singl
 
 ## Currency
 
-The navbar currency switcher offers 16 common currencies. The active code is persisted in `localStorage` under `aurehotel.currency`, pinned as the first row of the dropdown, and full currency names are localized with `Intl.DisplayNames`. Use the shared hook in future sections:
+The navbar currency switcher offers 16 common currencies. The active code is persisted in `localStorage` under `aurehotel.currency`, pinned as the first row of the dropdown, and full currency names are localized with `Intl.DisplayNames`.
+
+Prices are stored in IDR and converted to the active currency with `formatPrice()` from `src/utils/currency.js`. Live IDR rates are fetched once when `CurrencyProvider` mounts, using this endpoint order:
+
+1. `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/idr.json`
+2. `https://latest.currency-api.pages.dev/v1/currencies/idr.json`
+
+If both endpoints fail (or while rates are still loading), the app keeps using the static fallback rates defined in `src/utils/currency.js`, so prices always render. Use the shared hook in future sections:
 
 ```jsx
 import { useCurrency } from "./hooks/useCurrency.jsx";
 
-const { currency, setCurrency } = useCurrency();
+const { currency, setCurrency, rates } = useCurrency();
+
+formatPrice(room.price, currency, locale, rates);
 ```
 
 ## Rooms carousel

@@ -80,12 +80,12 @@ export default function BookingSection() {
   const [summary, setSummary] = useState(null);
   const { t, i18n } = useTranslation();
   const { ctaPreset, roomSelection } = useBookingFlow();
-  const { currency } = useCurrency();
+  const { currency, rates } = useCurrency();
   const showToast = useToast();
   const locale = i18n.resolvedLanguage || i18n.language || "en";
 
   const room = ROOMS.find((item) => item.id === roomId) ?? ROOMS[0];
-  const money = (amount) => formatPrice(amount, currency, locale);
+  const money = (amount) => formatPrice(amount, currency, locale, rates);
 
   useEffect(() => {
     if (!ctaPreset) return;
