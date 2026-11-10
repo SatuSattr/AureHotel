@@ -49,8 +49,21 @@
       "gender": "Gender",
       "male": "Male",
       "female": "Female",
+      "guestOrigin": "Guest Origin",
+      "local": "Local (Indonesia)",
+      "international": "International",
+      "nationality": "Nationality",
+      "nationalityPlaceholder": "Select nationality",
+      "nationalitySearch": "Search country",
+      "nationalityNoResults": "No countries found.",
+      "email": "Email",
+      "emailPlaceholder": "name@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+62 812 3456 7890",
       "identity": "Identity Number",
       "identityPlaceholder": "16 digits",
+      "identityInternationalHint": "Passport or ID",
+      "identityPlaceholderInternational": "Passport or ID number",
       "roomType": "Room Type",
       "pricePerNight": "Price per Night",
       "date": "Booking Date",
@@ -72,15 +85,33 @@
       "breakfastLine": "Breakfast ({{count}} nights)",
       "discount": "10% room discount",
       "calculated": "Total payment calculated: {{total}}",
+      "pay": "Pay",
+      "cancel": "Cancel",
+      "paymentSuccessTitle": "Payment Successful",
+      "processingTitle": "Processing Payment",
+      "processingBody": "Please wait a moment while we process your payment.",
+      "paymentSuccessBody": "Thank you, your payment has been received.",
+      "paymentErrorTitle": "Payment Failed",
+      "paymentErrorBody": "We could not process your booking. Please try again.",
+      "close": "Close",
       "errors": {
         "name": "Please enter the guest name.",
         "nameMin": "Guest name must be at least 3 characters.",
+        "nameNoDigits": "Guest name cannot contain numbers.",
         "gender": "Please select a gender.",
-        "identity": "Invalid input..data must be 16 digits",
+        "origin": "Please select the guest origin.",
+        "nationality": "Please select a nationality.",
+        "email": "Please enter your email address.",
+        "emailInvalid": "Please enter a valid email address.",
+        "phone": "Please enter your phone number.",
+        "phoneInvalid": "Please enter a valid phone number.",
+        "identity": "Identity number must be exactly 16 digits.",
+        "identityInternational": "Enter a valid passport or ID number (4-25 characters).",
         "date": "Please enter a valid date in dd/mm/yyyy format.",
         "nights": "Please enter numbers only.",
         "nightsMax": "Maximum stay is 30 nights."
-      }
+      },
+      "viewInvoice": "View Invoice"
     }
   },
   "guests": {
@@ -103,7 +134,15 @@
     "nightsSelected_one": "{{count}} night selected",
     "nightsSelected_other": "{{count}} nights selected",
     "clear": "Clear",
-    "weekdays": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+    "weekdays": [
+      "Su",
+      "Mo",
+      "Tu",
+      "We",
+      "Th",
+      "Fr",
+      "Sa"
+    ]
   },
   "trusted": {
     "title": "Trusted by Leading Brands.",
@@ -158,12 +197,24 @@
     "title": "Explore Our Moments",
     "subtitle": "Feel the warm atmosphere and panoramic beauty of the hotel before you even arrive.",
     "items": {
-      "dining": { "alt": "Dining terrace overlooking the water" },
-      "pool": { "alt": "Pool glowing at dusk" },
-      "vineyard": { "alt": "Vineyard with a glass of wine" },
-      "room": { "alt": "Guest room with a plush bed" },
-      "aerial": { "alt": "Aerial view of the resort pool" },
-      "lavender": { "alt": "Lavender field at sunset" }
+      "dining": {
+        "alt": "Dining terrace overlooking the water"
+      },
+      "pool": {
+        "alt": "Pool glowing at dusk"
+      },
+      "vineyard": {
+        "alt": "Vineyard with a glass of wine"
+      },
+      "room": {
+        "alt": "Guest room with a plush bed"
+      },
+      "aerial": {
+        "alt": "Aerial view of the resort pool"
+      },
+      "lavender": {
+        "alt": "Lavender field at sunset"
+      }
     }
   },
   "stay": {
@@ -235,5 +286,43 @@
   },
   "language": {
     "changed": "Language switched to {{language}}"
+  },
+  "invoice": {
+    "title": "Booking Invoice",
+    "loading": "Loading invoice...",
+    "notFoundTitle": "Invoice Not Found",
+    "notFoundBody": "We could not find a booking for this link. Please check the URL and try again.",
+    "loadErrorTitle": "Unable to Load Invoice",
+    "loadErrorBody": "Something went wrong while loading your invoice. Please try again.",
+    "retry": "Try Again",
+    "backHome": "Back to AureHotel",
+    "invoiceNo": "Invoice No.",
+    "hash": "Booking Hash",
+    "issued": "Issued",
+    "status": "Status",
+    "paid": "Paid",
+    "guest": "Guest",
+    "origin": "Guest Origin",
+    "originLocal": "Local (Indonesia)",
+    "originInternational": "International",
+    "nationality": "Nationality",
+    "email": "Email",
+    "phone": "Phone",
+    "identity": "Identity",
+    "room": "Room",
+    "bookingDate": "Booking Date",
+    "nights": "Length of Stay",
+    "nightsValue": "{{count}} nights",
+    "breakfast": "Breakfast",
+    "included": "Included",
+    "notIncluded": "Not included",
+    "summary": "Payment Summary",
+    "roomLine": "Room ({{count}} nights)",
+    "discount": "10% room discount",
+    "breakfastLine": "Breakfast ({{count}} nights)",
+    "total": "Total Paid",
+    "qrCaption": "Scan to open this invoice",
+    "thankYou": "Thank you for choosing AureHotel.",
+    "footnote": "This invoice was generated automatically and is valid without a signature."
   }
 }

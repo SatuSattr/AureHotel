@@ -49,8 +49,21 @@
       "gender": "Jenis Kelamin",
       "male": "Laki-laki",
       "female": "Perempuan",
+      "guestOrigin": "Asal Tamu",
+      "local": "Lokal (Indonesia)",
+      "international": "Internasional",
+      "nationality": "Kewarganegaraan",
+      "nationalityPlaceholder": "Pilih kewarganegaraan",
+      "nationalitySearch": "Cari negara",
+      "nationalityNoResults": "Negara tidak ditemukan.",
+      "email": "Email",
+      "emailPlaceholder": "nama@contoh.com",
+      "phone": "Nomor Telepon",
+      "phonePlaceholder": "+62 812 3456 7890",
       "identity": "Nomor Identitas",
       "identityPlaceholder": "16 digit",
+      "identityInternationalHint": "Paspor atau ID",
+      "identityPlaceholderInternational": "Nomor paspor atau ID",
       "roomType": "Tipe Kamar",
       "pricePerNight": "Harga per Malam",
       "date": "Tanggal Pesan",
@@ -72,15 +85,33 @@
       "breakfastLine": "Breakfast ({{count}} malam)",
       "discount": "Diskon kamar 10%",
       "calculated": "Total bayar berhasil dihitung: {{total}}",
+      "pay": "Bayar",
+      "cancel": "Batal",
+      "paymentSuccessTitle": "Pembayaran Berhasil",
+      "processingTitle": "Memproses Pembayaran",
+      "processingBody": "Mohon tunggu sebentar, pembayaran Anda sedang diproses.",
+      "paymentSuccessBody": "Terima kasih, pembayaran Anda telah berhasil kami terima.",
+      "paymentErrorTitle": "Pembayaran Gagal",
+      "paymentErrorBody": "Booking tidak dapat diproses. Silakan coba lagi.",
+      "close": "Tutup",
       "errors": {
         "name": "Nama pemesan wajib diisi.",
         "nameMin": "Nama pemesan minimal 3 karakter.",
+        "nameNoDigits": "Nama pemesan tidak boleh mengandung angka.",
         "gender": "Pilih jenis kelamin.",
-        "identity": "isian salah..data harus 16 digit",
+        "origin": "Silakan pilih asal tamu.",
+        "nationality": "Silakan pilih kewarganegaraan.",
+        "email": "Email wajib diisi.",
+        "emailInvalid": "Masukkan alamat email yang valid.",
+        "phone": "Nomor telepon wajib diisi.",
+        "phoneInvalid": "Masukkan nomor telepon yang valid.",
+        "identity": "Nomor identitas harus tepat 16 digit.",
+        "identityInternational": "Masukkan nomor paspor atau ID yang valid (4-25 karakter).",
         "date": "Isi tanggal dengan format dd/mm/yyyy.",
         "nights": "harus isi angka",
         "nightsMax": "Maksimal menginap 30 malam."
-      }
+      },
+      "viewInvoice": "Lihat Invoice"
     }
   },
   "guests": {
@@ -99,7 +130,15 @@
     "selectCheckOutMax": "Sekarang pilih tanggal check-out (maksimal {{count}} malam)",
     "nightsSelected_other": "{{count}} malam dipilih",
     "clear": "Hapus",
-    "weekdays": ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"]
+    "weekdays": [
+      "Min",
+      "Sen",
+      "Sel",
+      "Rab",
+      "Kam",
+      "Jum",
+      "Sab"
+    ]
   },
   "trusted": {
     "title": "Dipercaya oleh Merek Terkemuka.",
@@ -154,12 +193,24 @@
     "title": "Jelajahi Momen Kami",
     "subtitle": "Rasakan suasana hangat dan keindahan panorama hotel bahkan sebelum Anda tiba.",
     "items": {
-      "dining": { "alt": "Teras makan dengan pemandangan air" },
-      "pool": { "alt": "Kolam renang yang bersinar saat senja" },
-      "vineyard": { "alt": "Kebun anggur dengan segelas wine" },
-      "room": { "alt": "Kamar tamu dengan kasur yang nyaman" },
-      "aerial": { "alt": "Pemandangan kolam resor dari udara" },
-      "lavender": { "alt": "Ladang lavender saat matahari terbenam" }
+      "dining": {
+        "alt": "Teras makan dengan pemandangan air"
+      },
+      "pool": {
+        "alt": "Kolam renang yang bersinar saat senja"
+      },
+      "vineyard": {
+        "alt": "Kebun anggur dengan segelas wine"
+      },
+      "room": {
+        "alt": "Kamar tamu dengan kasur yang nyaman"
+      },
+      "aerial": {
+        "alt": "Pemandangan kolam resor dari udara"
+      },
+      "lavender": {
+        "alt": "Ladang lavender saat matahari terbenam"
+      }
     }
   },
   "stay": {
@@ -230,5 +281,43 @@
   },
   "language": {
     "changed": "Bahasa diubah ke {{language}}"
+  },
+  "invoice": {
+    "title": "Invoice Pemesanan",
+    "loading": "Memuat invoice...",
+    "notFoundTitle": "Invoice Tidak Ditemukan",
+    "notFoundBody": "Kami tidak menemukan pemesanan untuk tautan ini. Periksa kembali URL-nya.",
+    "loadErrorTitle": "Gagal Memuat Invoice",
+    "loadErrorBody": "Terjadi kesalahan saat memuat invoice Anda. Silakan coba lagi.",
+    "retry": "Coba Lagi",
+    "backHome": "Kembali ke AureHotel",
+    "invoiceNo": "No. Invoice",
+    "hash": "Hash Pemesanan",
+    "issued": "Diterbitkan",
+    "status": "Status",
+    "paid": "Lunas",
+    "guest": "Tamu",
+    "origin": "Asal Tamu",
+    "originLocal": "Lokal (Indonesia)",
+    "originInternational": "Internasional",
+    "nationality": "Kewarganegaraan",
+    "email": "Email",
+    "phone": "Telepon",
+    "identity": "Identitas",
+    "room": "Kamar",
+    "bookingDate": "Tanggal Pesan",
+    "nights": "Durasi Menginap",
+    "nightsValue": "{{count}} malam",
+    "breakfast": "Breakfast",
+    "included": "Termasuk",
+    "notIncluded": "Tidak termasuk",
+    "summary": "Rincian Pembayaran",
+    "roomLine": "Kamar ({{count}} malam)",
+    "discount": "Diskon kamar 10%",
+    "breakfastLine": "Breakfast ({{count}} malam)",
+    "total": "Total Dibayar",
+    "qrCaption": "Scan untuk membuka invoice ini",
+    "thankYou": "Terima kasih telah memilih AureHotel.",
+    "footnote": "Invoice ini dibuat secara otomatis dan sah tanpa tanda tangan."
   }
 }

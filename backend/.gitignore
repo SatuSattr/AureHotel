@@ -1,0 +1,8 @@
+# Local overrides (keep credentials out of version control).
+config.local.php
+.env
+.env.local
+
+# Runtime rate-limit data.
+storage/rate_limits/*
+!storage/rate_limits/.gitignore

@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import AboutSection from "./components/AboutSection.jsx";
 import BookingSection from "./components/BookingSection.jsx";
+import InvoicePage from "./components/InvoicePage.jsx";
 import RoomsSection from "./components/RoomsSection.jsx";
 import GallerySection from "./components/GallerySection.jsx";
 import ReviewsSection from "./components/ReviewsSection.jsx";
@@ -14,7 +15,9 @@ import { CurrencyProvider } from "./hooks/useCurrency.jsx";
 import { BookingFlowProvider } from "./hooks/useBookingFlow.jsx";
 import { ToastProvider } from "./hooks/useToast.jsx";
 
-export default function App() {
+const INVOICE_ROUTE = /^\/invoice\/([^/]+)\/?$/;
+
+function LandingPage() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -45,4 +48,16 @@ export default function App() {
       </CurrencyProvider>
     </ToastProvider>
   );
+}
+
+export default function App() {
+  const pathname =
+    typeof window !== "undefined" ? window.location.pathname : "/";
+  const invoiceMatch = pathname.match(INVOICE_ROUTE);
+
+  if (invoiceMatch) {
+    return <InvoicePage hashId={invoiceMatch[1]} />;
+  }
+
+  return <LandingPage />;
 }

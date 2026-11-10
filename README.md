@@ -4,11 +4,11 @@ Navbar and hero section recreated from the reference screenshot and rebranded as
 
 Migrated to **Vite + React 19 + Tailwind CSS v4**, with the UI split into small, reusable components.
 
-The repository is split into a frontend app and a backend workspace:
+The repository is split into a frontend app and a native PHP backend:
 
 ```
-frontend/   Vite + React application (this README)
-backend/    reserved for the future API/server (currently empty)
+frontend/   Vite + React application
+backend/    Native PHP API, MySQL schema, and push/fresh scripts
 ```
 
 ## Getting started
@@ -75,7 +75,13 @@ frontend/
       ui/
         Toast.jsx             Toast presentation
 backend/
-  .gitkeep                    Placeholder so the empty folder is tracked
+  config.php                  DB credentials, CORS origins, pricing, rooms
+  public/index.php            POST /book endpoint + CORS/security checks
+  database/schema.sql         bookings table schema
+  src/                        Bootstrap, DB, schema, rate limiter, booking service
+  bin/push.php                Create database/table if missing
+  bin/fresh.php               Drop and recreate the database
+  storage/rate_limits/        Runtime rate-limit files (not public)
 ```
 
 ## Internationalization
@@ -134,7 +140,7 @@ Below the carousel, `RoomRateTable.jsx` compares all room types with dynamic sta
 
 ## Booking form
 
-`BookingSection.jsx` adds the non-binding inquiry form at `#request`, which is also the target of the navbar "Book Now" button. It validates the guest name, gender, 16-digit identity number, booking date (`dd/mm/yyyy`), and numeric length of stay. Clicking **Hitung Total Bayar** fills the read-only total from the selected room price, applies a 10% room discount for stays longer than 3 nights, and adds Rp 80,000 per night when breakfast is included. Room prices and the total follow the active navbar currency.
+`BookingSection.jsx` adds the non-binding inquiry form at `#request`, which is also the target of the navbar "Book Now" button. It validates the guest name, gender, guest origin (local Indonesia or international), nationality for international guests (searchable country dropdown with lazily loaded flags), email address, phone number, identity number, booking date (`dd/mm/yyyy`), and numeric length of stay. Local guests use a 16-digit identity number; international guests use a passport or ID of up to 25 characters. Clicking **Hitung Total Bayar** fills the read-only total from the selected room price, applies a 10% room discount for stays longer than 3 nights, and adds Rp 80,000 per night when breakfast is included. Once the total is calculated, every form field is locked and the action switches to **Bayar** with a **Batal** button beside it; cancelling unlocks the form and clears the toast, while paying shows a processing dialog for about two seconds before the animated success state. Closing the success dialog resets the whole form. Room prices and the total follow the active navbar currency.
 
 ## Booking flow
 
@@ -143,6 +149,25 @@ Choosing guests and dates in the hero booking bar prefills the booking form and 
 ## Footer
 
 `Footer.jsx` renders the dark rounded footer below the main content with quick links, a newsletter form, the AureHotel wordmark, and the hotel address, phone and email. The newsletter shows a toast for valid and invalid email submissions, and all copy comes from the `footer.*` keys in every locale.
+
+## Backend
+
+The booking form sends a `POST /book` request to the native PHP API while the payment dialog is in its loading state. Data is validated server-side, all prices and totals are recalculated from the backend room catalogue, and the booking is stored in MySQL.
+
+Each booking gets a `hash_id` (MD5 fingerprint of the record). After a successful payment the success dialog links to `/invoice/{hash_id}`, a standalone receipt-style page without the navbar or footer. The page fetches `GET /bookings/{hash_id}` and renders the booking details, price breakdown, a QR code pointing at the invoice URL, and a masked identity number.
+
+Once the booking is stored, the backend also sends the guest a thank-you email with the invoice link. SMTP settings (host, port, credentials, TLS mode, sender, and `FRONTEND_URL`) are configured through `backend/.env`; see `backend/README.md`.
+
+```bash
+cd backend
+php bin/push.php    # create the database and table (safe to re-run)
+php bin/fresh.php   # drop and recreate the database
+php -S localhost:8000 -t public public/index.php
+```
+
+Defaults (overridable through env vars) are MySQL at `127.0.0.1`, database `aurehotel`, user `root`, password `1232`. The frontend reads `VITE_API_BASE_URL` from `frontend/.env.local` (default `http://localhost:8000`).
+
+Security includes an origin allowlist, a required custom request header, per-IP rate limiting, strict JSON/input validation, prepared statements, and server-side total calculation. See `backend/README.md` for details.
 
 ## Notes
 

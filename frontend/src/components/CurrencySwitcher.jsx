@@ -13,7 +13,7 @@ export default function CurrencySwitcher() {
   const containerRef = useRef(null);
   const { t, i18n } = useTranslation();
   const { currency, setCurrency } = useCurrency();
-  const showToast = useToast();
+  const { showToast } = useToast();
 
   const close = () => {
     setOpen(false);

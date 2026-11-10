@@ -8,7 +8,10 @@ import {
 } from "react";
 import Toast from "../components/ui/Toast.jsx";
 
-const ToastContext = createContext(() => {});
+const ToastContext = createContext({
+  showToast: () => {},
+  hideToast: () => {},
+});
 
 export function ToastProvider({ children }) {
   const [toast, setToast] = useState({ message: "", visible: false });
@@ -35,7 +38,7 @@ export function ToastProvider({ children }) {
   );
 
   return (
-    <ToastContext.Provider value={showToast}>
+    <ToastContext.Provider value={{ showToast, hideToast }}>
       {children}
       <Toast
         message={toast.message}

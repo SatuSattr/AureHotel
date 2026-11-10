@@ -9,7 +9,7 @@ export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
   const containerRef = useRef(null);
   const { t, i18n } = useTranslation();
-  const showToast = useToast();
+  const { showToast } = useToast();
 
   useDismiss(containerRef, () => setOpen(false), open);
 

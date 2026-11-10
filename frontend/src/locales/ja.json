@@ -49,8 +49,21 @@
       "gender": "性別",
       "male": "男性",
       "female": "女性",
+      "guestOrigin": "ゲストの居住地",
+      "local": "インドネシア国内",
+      "international": "海外",
+      "nationality": "国籍",
+      "nationalityPlaceholder": "国籍を選択",
+      "nationalitySearch": "国を検索",
+      "nationalityNoResults": "国が見つかりません。",
+      "email": "メールアドレス",
+      "emailPlaceholder": "name@example.com",
+      "phone": "電話番号",
+      "phonePlaceholder": "+81 90 1234 5678",
       "identity": "本人確認番号",
       "identityPlaceholder": "16桁",
+      "identityInternationalHint": "パスポートまたはID",
+      "identityPlaceholderInternational": "パスポートまたはID番号",
       "roomType": "客室タイプ",
       "pricePerNight": "1泊あたりの料金",
       "date": "予約日",
@@ -72,15 +85,33 @@
       "breakfastLine": "朝食（{{count}} 泊）",
       "discount": "室料 10% 割引",
       "calculated": "お支払い総額を計算しました：{{total}}",
+      "pay": "支払う",
+      "cancel": "キャンセル",
+      "paymentSuccessTitle": "お支払いが完了しました",
+      "processingTitle": "お支払いを処理しています",
+      "processingBody": "お支払いを処理しています。少々お待ちください。",
+      "paymentSuccessBody": "お支払いを受け付けました。ありがとうございます。",
+      "paymentErrorTitle": "お支払いに失敗しました",
+      "paymentErrorBody": "ご予約を処理できませんでした。もう一度お試しください。",
+      "close": "閉じる",
       "errors": {
         "name": "ご予約者名を入力してください。",
         "nameMin": "ご予約者名は3文字以上で入力してください。",
+        "nameNoDigits": "ご予約者名に数字は使用できません。",
         "gender": "性別を選択してください。",
-        "identity": "入力エラー..データは16桁である必要があります",
+        "origin": "ゲストの居住地を選択してください。",
+        "nationality": "国籍を選択してください。",
+        "email": "メールアドレスを入力してください。",
+        "emailInvalid": "有効なメールアドレスを入力してください。",
+        "phone": "電話番号を入力してください。",
+        "phoneInvalid": "有効な電話番号を入力してください。",
+        "identity": "本人確認番号は16桁で入力してください。",
+        "identityInternational": "有効なパスポートまたはID番号を入力してください（4〜25文字）。",
         "date": "日付を dd/mm/yyyy 形式で入力してください。",
         "nights": "数字を入力してください",
         "nightsMax": "最大30泊までです。"
-      }
+      },
+      "viewInvoice": "請求書を見る"
     }
   },
   "guests": {
@@ -99,7 +130,15 @@
     "selectCheckOutMax": "チェックアウト日を選択（最大{{count}}泊）",
     "nightsSelected_other": "{{count}} 泊を選択中",
     "clear": "クリア",
-    "weekdays": ["日", "月", "火", "水", "木", "金", "土"]
+    "weekdays": [
+      "日",
+      "月",
+      "火",
+      "水",
+      "木",
+      "金",
+      "土"
+    ]
   },
   "trusted": {
     "title": "一流ブランドから信頼されています。",
@@ -154,12 +193,24 @@
     "title": "私たちの瞬間を巡る",
     "subtitle": "ご到着前に、ホテルの温かな雰囲気とパノラマの美しさをお楽しみください。",
     "items": {
-      "dining": { "alt": "水辺を見渡すダイニングテラス" },
-      "pool": { "alt": "夕暮れに輝くプール" },
-      "vineyard": { "alt": "ワイングラスとぶどう畑" },
-      "room": { "alt": "ふかふかのベッドがある客室" },
-      "aerial": { "alt": "リゾートプールの空撮" },
-      "lavender": { "alt": "夕暮れのラベンダー畑" }
+      "dining": {
+        "alt": "水辺を見渡すダイニングテラス"
+      },
+      "pool": {
+        "alt": "夕暮れに輝くプール"
+      },
+      "vineyard": {
+        "alt": "ワイングラスとぶどう畑"
+      },
+      "room": {
+        "alt": "ふかふかのベッドがある客室"
+      },
+      "aerial": {
+        "alt": "リゾートプールの空撮"
+      },
+      "lavender": {
+        "alt": "夕暮れのラベンダー畑"
+      }
     }
   },
   "stay": {
@@ -230,5 +281,43 @@
   },
   "language": {
     "changed": "言語を {{language}} に変更しました"
+  },
+  "invoice": {
+    "title": "予約請求書",
+    "loading": "請求書を読み込み中...",
+    "notFoundTitle": "請求書が見つかりません",
+    "notFoundBody": "このリンクに該当する予約が見つかりませんでした。URLをご確認ください。",
+    "loadErrorTitle": "請求書を読み込めません",
+    "loadErrorBody": "請求書の読み込み中にエラーが発生しました。もう一度お試しください。",
+    "retry": "再試行",
+    "backHome": "AureHotel に戻る",
+    "invoiceNo": "請求書番号",
+    "hash": "予約ハッシュ",
+    "issued": "発行日",
+    "status": "ステータス",
+    "paid": "支払済み",
+    "guest": "ゲスト",
+    "origin": "ゲストの居住地",
+    "originLocal": "インドネシア国内",
+    "originInternational": "海外",
+    "nationality": "国籍",
+    "email": "メールアドレス",
+    "phone": "電話番号",
+    "identity": "本人確認",
+    "room": "客室",
+    "bookingDate": "予約日",
+    "nights": "宿泊数",
+    "nightsValue": "{{count}} 泊",
+    "breakfast": "朝食",
+    "included": "付き",
+    "notIncluded": "なし",
+    "summary": "お支払い内訳",
+    "roomLine": "客室（{{count}} 泊）",
+    "discount": "室料 10% 割引",
+    "breakfastLine": "朝食（{{count}} 泊）",
+    "total": "お支払い総額",
+    "qrCaption": "スキャンして請求書を開く",
+    "thankYou": "AureHotel をご利用いただきありがとうございます。",
+    "footnote": "この請求書は自動生成されたもので、署名なしで有効です。"
   }
 }

@@ -155,6 +155,19 @@
   transform: rotate(180deg);
 }
 
+@media print {
+  .invoice-page {
+    background: #fff !important;
+    padding: 0 !important;
+  }
+
+  .invoice-receipt {
+    max-width: 100% !important;
+    border-color: #ddd !important;
+    box-shadow: none !important;
+  }
+}
+
 .thin-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #d8d0c8 transparent;
@@ -473,7 +486,6 @@
   box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.55);
   opacity: 0;
   pointer-events: none;
-  cursor: pointer;
   user-select: none;
   transform: translate(-50%, 18px) scale(0.96);
   transition:
@@ -483,7 +495,7 @@
 
 .toast.is-visible {
   opacity: 1;
-  pointer-events: auto;
+  pointer-events: none;
   transform: translate(-50%, 0) scale(1);
 }
 
@@ -510,6 +522,35 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+/* Payment dialog */
+
+.payment-dialog {
+  animation: pop 0.25s ease both;
+}
+
+.payment-success-icon {
+  animation: payment-success-pop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.payment-success-text {
+  animation: rise 0.35s ease 0.08s both;
+}
+
+@keyframes payment-success-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 

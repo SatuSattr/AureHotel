@@ -9,36 +9,76 @@ import HeroContent from "./HeroContent.jsx";
 export default function Hero() {
   const { t } = useTranslation();
   const [videoFailed, setVideoFailed] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [videoSrc, setVideoSrc] = useState(null);
+  const [videoReady, setVideoReady] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
+  const userPausedRef = useRef(false);
+
+  // Delay the 12 MB video request until after the first render so the hero
+  // image can paint immediately, then let the browser fetch it in idle time.
+  useEffect(() => {
+    let idleId = null;
+    let timeoutId = null;
+
+    const startLoading = () => setVideoSrc(heroVideo);
+
+    if (typeof window.requestIdleCallback === "function") {
+      idleId = window.requestIdleCallback(startLoading, { timeout: 1800 });
+    } else {
+      timeoutId = window.setTimeout(startLoading, 200);
+    }
+
+    return () => {
+      if (idleId !== null) window.cancelIdleCallback(idleId);
+      if (timeoutId !== null) window.clearTimeout(timeoutId);
+    };
+  }, []);
 
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const video = videoRef.current;
+    if (!video || videoFailed) return;
 
-    const syncPlayback = () => {
-      const video = videoRef.current;
-      if (!video) return;
+    // Some browsers only honour autoplay when muted is already set on the
+    // element, so make sure it is applied before the first play() attempt.
+    video.muted = true;
+    video.defaultMuted = true;
 
-      if (media.matches || videoFailed) {
-        video.pause();
-      } else {
-        video.play().catch(() => {});
-      }
+    const attemptPlay = () => {
+      if (userPausedRef.current) return;
+      video.play().catch(() => {});
     };
 
-    syncPlayback();
-    media.addEventListener("change", syncPlayback);
+    attemptPlay();
+    video.addEventListener("loadeddata", attemptPlay);
+    video.addEventListener("canplay", attemptPlay);
 
-    return () => media.removeEventListener("change", syncPlayback);
-  }, [videoFailed]);
+    return () => {
+      video.removeEventListener("loadeddata", attemptPlay);
+      video.removeEventListener("canplay", attemptPlay);
+    };
+  }, [videoFailed, videoSrc]);
+
+  const handleCanPlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    setVideoReady(true);
+
+    if (!userPausedRef.current) {
+      video.play().catch(() => {});
+    }
+  };
 
   const togglePlayback = () => {
     const video = videoRef.current;
     if (!video) return;
 
     if (video.paused) {
+      userPausedRef.current = false;
       video.play().catch(() => {});
     } else {
+      userPausedRef.current = true;
       video.pause();
     }
   };
@@ -54,11 +94,13 @@ export default function Hero() {
         src={heroImage}
         alt="A warm, wood-panelled suite at AureHotel Jakarta with a king bed, soft lamps and a view of the city"
       />
-      {!videoFailed && (
+      {!videoFailed && videoSrc ? (
         <video
           ref={videoRef}
-          className="absolute inset-0 z-0 h-full w-full rounded-[inherit] object-cover object-[center_58%] max-[760px]:object-[58%_center]"
-          src={heroVideo}
+          className={`absolute inset-0 z-0 h-full w-full rounded-[inherit] object-cover object-[center_58%] transition-opacity duration-700 max-[760px]:object-[58%_center] ${
+            videoReady ? "opacity-100" : "opacity-0"
+          }`}
+          src={videoSrc}
           poster={heroImage}
           autoPlay
           muted
@@ -67,16 +109,24 @@ export default function Hero() {
           preload="auto"
           aria-hidden="true"
           tabIndex={-1}
+          onCanPlay={handleCanPlay}
+          onPlaying={() => {
+            setVideoReady(true);
+            setIsPlaying(true);
+          }}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
-          onError={() => setVideoFailed(true)}
+          onError={() => {
+            setVideoFailed(true);
+            setVideoReady(false);
+          }}
         />
-      )}
+      ) : null}
       <div
         className="hero-shade absolute inset-0 z-[1] rounded-[inherit]"
         aria-hidden="true"
       />
-      {!videoFailed && (
+      {!videoFailed && videoReady ? (
         <button
           className="absolute right-[clamp(14px,2.2vw,26px)] top-[clamp(14px,2.2vw,26px)] z-[3] grid h-11 w-11 place-items-center rounded-full border border-white/35 bg-[rgba(28,19,13,0.4)] p-0 text-white backdrop-blur-sm transition duration-200 hover:bg-[rgba(28,19,13,0.62)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           type="button"
@@ -90,7 +140,7 @@ export default function Hero() {
             <Play className="icon" aria-hidden="true" />
           )}
         </button>
-      )}
+      ) : null}
 
       <div className="relative z-[2] flex flex-1 flex-col px-[clamp(18px,4vw,56px)] pb-[clamp(22px,3vw,34px)] pt-[clamp(34px,5vw,58px)] max-[760px]:px-3.5 max-[760px]:pb-3.5 max-[760px]:pt-[22px]">
         <HeroContent />

@@ -13,7 +13,7 @@ export default function BookingBar() {
   const [range, setRange] = useState(EMPTY_RANGE);
   const { t } = useTranslation();
   const { startFromCta } = useBookingFlow();
-  const showToast = useToast();
+  const { showToast } = useToast();
 
   const handleSubmit = (event) => {
     event.preventDefault();

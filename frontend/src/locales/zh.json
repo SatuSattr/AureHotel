@@ -49,8 +49,21 @@
       "gender": "性别",
       "male": "男性",
       "female": "女性",
+      "guestOrigin": "客人来源",
+      "local": "本地（印度尼西亚）",
+      "international": "国际",
+      "nationality": "国籍",
+      "nationalityPlaceholder": "选择国籍",
+      "nationalitySearch": "搜索国家",
+      "nationalityNoResults": "未找到国家。",
+      "email": "电子邮箱",
+      "emailPlaceholder": "name@example.com",
+      "phone": "电话号码",
+      "phonePlaceholder": "+86 138 0000 0000",
       "identity": "身份证件号码",
       "identityPlaceholder": "16 位数字",
+      "identityInternationalHint": "护照或身份证件",
+      "identityPlaceholderInternational": "护照或身份证件号码",
       "roomType": "房型",
       "pricePerNight": "每晚价格",
       "date": "预订日期",
@@ -72,15 +85,33 @@
       "breakfastLine": "早餐（{{count}} 晚）",
       "discount": "房费 9 折",
       "calculated": "总付款已计算：{{total}}",
+      "pay": "立即支付",
+      "cancel": "取消",
+      "paymentSuccessTitle": "支付成功",
+      "processingTitle": "正在处理支付",
+      "processingBody": "请稍候，我们正在处理您的付款。",
+      "paymentSuccessBody": "感谢您，我们已收到您的付款。",
+      "paymentErrorTitle": "支付失败",
+      "paymentErrorBody": "无法处理您的预订，请重试。",
+      "close": "关闭",
       "errors": {
         "name": "请填写预订人姓名。",
         "nameMin": "预订人姓名至少需要 3 个字符。",
+        "nameNoDigits": "预订人姓名不能包含数字。",
         "gender": "请选择性别。",
-        "identity": "输入有误..数据必须为 16 位数字",
+        "origin": "请选择客人来源。",
+        "nationality": "请选择国籍。",
+        "email": "请填写电子邮箱。",
+        "emailInvalid": "请输入有效的电子邮箱。",
+        "phone": "请填写电话号码。",
+        "phoneInvalid": "请输入有效的电话号码。",
+        "identity": "身份证件号码必须为 16 位数字。",
+        "identityInternational": "请输入有效的护照或身份证件号码（4-25 个字符）。",
         "date": "请按 dd/mm/yyyy 格式填写有效日期。",
         "nights": "必须填写数字",
         "nightsMax": "最长入住 30 晚。"
-      }
+      },
+      "viewInvoice": "查看发票"
     }
   },
   "guests": {
@@ -99,7 +130,15 @@
     "selectCheckOutMax": "请选择退房日期（最多 {{count}} 晚）",
     "nightsSelected_other": "已选择 {{count}} 晚",
     "clear": "清除",
-    "weekdays": ["日", "一", "二", "三", "四", "五", "六"]
+    "weekdays": [
+      "日",
+      "一",
+      "二",
+      "三",
+      "四",
+      "五",
+      "六"
+    ]
   },
   "trusted": {
     "title": "深受领先品牌信赖。",
@@ -154,12 +193,24 @@
     "title": "探索我们的精彩瞬间",
     "subtitle": "在抵达之前，先感受酒店温暖的氛围与全景之美。",
     "items": {
-      "dining": { "alt": "临水用餐露台" },
-      "pool": { "alt": "黄昏时分的泳池" },
-      "vineyard": { "alt": "葡萄园与一杯葡萄酒" },
-      "room": { "alt": "配有柔软大床的客房" },
-      "aerial": { "alt": "度假村泳池的空中景观" },
-      "lavender": { "alt": "日落时分的薰衣草田" }
+      "dining": {
+        "alt": "临水用餐露台"
+      },
+      "pool": {
+        "alt": "黄昏时分的泳池"
+      },
+      "vineyard": {
+        "alt": "葡萄园与一杯葡萄酒"
+      },
+      "room": {
+        "alt": "配有柔软大床的客房"
+      },
+      "aerial": {
+        "alt": "度假村泳池的空中景观"
+      },
+      "lavender": {
+        "alt": "日落时分的薰衣草田"
+      }
     }
   },
   "stay": {
@@ -230,5 +281,43 @@
   },
   "language": {
     "changed": "语言已切换为 {{language}}"
+  },
+  "invoice": {
+    "title": "预订发票",
+    "loading": "正在加载发票...",
+    "notFoundTitle": "未找到发票",
+    "notFoundBody": "无法找到此链接对应的预订。请检查网址后重试。",
+    "loadErrorTitle": "无法加载发票",
+    "loadErrorBody": "加载发票时出错，请重试。",
+    "retry": "重试",
+    "backHome": "返回 AureHotel",
+    "invoiceNo": "发票编号",
+    "hash": "预订哈希",
+    "issued": "开具日期",
+    "status": "状态",
+    "paid": "已付款",
+    "guest": "客人",
+    "origin": "客人来源",
+    "originLocal": "本地（印度尼西亚）",
+    "originInternational": "国际",
+    "nationality": "国籍",
+    "email": "电子邮箱",
+    "phone": "电话号码",
+    "identity": "身份证件",
+    "room": "客房",
+    "bookingDate": "预订日期",
+    "nights": "入住时长",
+    "nightsValue": "{{count}} 晚",
+    "breakfast": "早餐",
+    "included": "包含",
+    "notIncluded": "不包含",
+    "summary": "付款明细",
+    "roomLine": "客房（{{count}} 晚）",
+    "discount": "房费 9 折",
+    "breakfastLine": "早餐（{{count}} 晚）",
+    "total": "已付总额",
+    "qrCaption": "扫描以打开此发票",
+    "thankYou": "感谢您选择 AureHotel。",
+    "footnote": "此发票由系统自动生成，无需签名即可生效。"
   }
 }

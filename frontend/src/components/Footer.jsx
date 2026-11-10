@@ -20,7 +20,7 @@ const MUTED_CLASSES = "text-[12.5px] leading-[1.65] text-white/65";
 export default function Footer() {
   const [email, setEmail] = useState("");
   const { t } = useTranslation();
-  const showToast = useToast();
+  const { showToast } = useToast();
   const year = new Date().getFullYear();
 
   const handleSubmit = (event) => {
